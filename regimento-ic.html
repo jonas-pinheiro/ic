@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regimento Interno — IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #0d2b4e;
+      --navy-mid: #1a4070;
+      --teal:     #2a9d8f;
+      --teal-lt:  #e6f7f5;
+      --amber:    #e9c46a;
+      --bg:       #f4f6f9;
+      --white:    #ffffff;
+      --text:     #1c2a3a;
+      --muted:    #5a6a7a;
+      --border:   #dce3ec;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 60px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .navbar-brand img {
+      height: 36px;
+      width: auto;
+    }
+    .navbar-brand span {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .navbar-breadcrumb {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .navbar-breadcrumb a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 2.5rem 2rem;
+    }
+    .page-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .page-header .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .subtitle {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+    }
+    .header-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .header-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── Layout ── */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: sticky;
+      top: 76px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .sidebar-header {
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1rem;
+    }
+    .nav-group {
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-group:last-child { border-bottom: none; }
+    .nav-group-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding: 0.65rem 1rem 0.3rem;
+    }
+    .sidebar a {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.35rem 1rem 0.35rem 1.25rem;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .sidebar a:hover {
+      background: var(--teal-lt);
+      color: var(--teal);
+      border-left-color: var(--teal);
+    }
+    .sidebar a.active {
+      background: var(--teal-lt);
+      color: var(--teal);
+      border-left-color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* ── Conteúdo ── */
+    .content section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .content section:last-child { margin-bottom: 0; }
+
+    .section-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .content h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--teal);
+      margin-bottom: 1.25rem;
+    }
+    .content h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .content h3:first-of-type { margin-top: 0; }
+    .content h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1rem 0 0.35rem;
+    }
+    .content p {
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .content p:last-child { margin-bottom: 0; }
+
+    /* listas de artigos/incisos */
+    .art-list {
+      list-style: none;
+      margin: 0.5rem 0 0.75rem;
+      padding: 0;
+    }
+    .art-list li {
+      padding: 0.3rem 0 0.3rem 1rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 0.25rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .art-list li strong { color: var(--navy); }
+
+    /* fases de pesquisa */
+    .fase-list {
+      list-style: none;
+      margin: 0.75rem 0;
+      padding: 0;
+      counter-reset: fase;
+    }
+    .fase-list > li {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      align-items: flex-start;
+    }
+    .fase-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+    }
+    .fase-body { flex: 1; }
+    .fase-body strong { display: block; font-size: 0.88rem; color: var(--navy); }
+    .fase-sub {
+      list-style: none;
+      margin: 0.25rem 0 0 0;
+      padding: 0;
+    }
+    .fase-sub li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 0.15rem;
+    }
+
+    /* tabela */
+    .reg-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 0.75rem 0;
+    }
+    .reg-table th {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    .reg-table td {
+      padding: 0.45rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .reg-table tr:last-child td { border-bottom: none; }
+    .reg-table tr:nth-child(even) td { background: var(--bg); }
+
+    /* divisor entre artigos */
+    .art-divider {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 1.25rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      font-size: 0.78rem;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
+
+    /* ── Nota de revisão (uso interno — remover antes de publicar) ── */
+    .nota-revisao {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      background: #fffbe6;
+      border: 1px dashed #f0c040;
+      border-left: 3px solid #f0c040;
+      border-radius: 6px;
+      padding: 0.6rem 0.85rem;
+      margin: 0.75rem 0;
+      font-size: 0.78rem;
+      color: #5a4a00;
+      line-height: 1.5;
+    }
+    .nota-revisao .nr-icon {
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .nota-revisao .nr-label {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.68rem;
+      display: block;
+      margin-bottom: 0.2rem;
+      color: #a07800;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a class="navbar-brand" href="index.html">
+    <img src="logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb">
+    <a href="index.html">Início</a> / <span>Regimento Interno</span>
+  </div>
+</nav>
+
+<!-- Page header -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Documento oficial</div>
+    <h1>Regimento Interno de IC</h1>
+    <p class="subtitle">Normas e diretrizes do Programa de Iniciação Científica do Colégio Interativa · 2026</p>
+    <div class="header-tags">
+      <span class="header-tag">Versão 18/06/2026</span>
+      <span class="header-tag">EF Anos Finais · Ensino Médio</span>
+      <span class="header-tag">Coordenação de IC</span>
+    </div>
+  </div>
+</header>
+
+<!-- Layout -->
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">Navegação</div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Introdução</div>
+      <a href="#apresentacao">Apresentação</a>
+      <a href="#sec1">Seção 1 — Introdução à IC</a>
+      <a href="#sec2">Seção 2 — Organização curricular</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Estrutura curricular</div>
+      <a href="#sec3">Seção 3 — EFAI</a>
+      <a href="#sec4">Seção 4 — EFAF e Ensino Médio</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Normas de projeto</div>
+      <a href="#sec5">Seção 5 — Desenvolvimento</a>
+      <a href="#sec6">Seção 6 — Avaliação</a>
+      <a href="#sec7">Seção 7 — Ética e autoria</a>
+      <a href="#sec8">Seção 8 — Parcerias externas</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Eventos científicos</div>
+      <a href="#sec9">Seção 9 — FITEC</a>
+      <a href="#sec10">Seção 10 — Eventos externos</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Responsabilidades</div>
+      <a href="#sec11">Seção 11 — Orientador(a)</a>
+      <a href="#sec12">Seção 12 — Aluno pesquisador</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Espaços e segurança</div>
+      <a href="#sec13">Seção 13 — Segurança</a>
+      <a href="#sec14-lab">Seção 14 — Laboratório</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Instâncias</div>
+      <a href="#sec14-crc">Seção 15 — CRC</a>
+      <a href="#sec15">Seção 16 — Mostra de Monografias</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Alto Rendimento</div>
+      <a href="#sec16">Seção 17 — Programa AR</a>
+    </div>
+  </aside>
+
+  <!-- Conteúdo -->
+  <main class="content">
+
+    <!-- Apresentação -->
+    <section id="apresentacao">
+      <div class="section-eyebrow">Documento oficial · Regimento Interno IC 2026</div>
+      <h2>Apresentação</h2>
+      <p>Ao longo de mais de 20 anos, com a consolidação da Iniciação Científica no Colégio Interativa, compreendeu-se a importância de atualizar um documento que orientasse professores, estudantes e famílias sobre as etapas e os princípios que envolvem o processo de pesquisa científica.</p>
+      <p>Dessa forma, por meio da coordenação de área, em parceria com a equipe gestora e pedagógica, foi elaborado o Regimento Interno da Iniciação Científica. Este regimento tem como objetivo apresentar à comunidade escolar noções fundamentais sobre a pesquisa, suas etapas e formas de apresentação, contribuindo para o acompanhamento e apoio ao percurso investigativo dos estudantes.</p>
+      <p>A pesquisa científica exige do pesquisador ética, seriedade e compromisso — desde o planejamento até a apresentação dos resultados. É justamente sobre esse caminho que este documento se propõe a tratar, oferecendo diretrizes claras e acessíveis a todos os envolvidos.</p>
+    </section>
+
+    <!-- Seção 1 -->
+    <section id="sec1">
+      <div class="section-eyebrow">Seção 1</div>
+      <h2>Introdução à Iniciação Científica no Colégio Interativa</h2>
+      <p>Desde os primeiros anos da educação formal, os estudantes devem ter contato com a cultura científica, entendida como a produção sistemática do conhecimento e seu impacto na sociedade. É essencial também estimular a criatividade e a capacidade de inovar, que são pilares da ciência. A iniciação científica, processo inicial de formação do pesquisador, envolve a busca sistemática de informações, elaboração de métodos e apresentação dos resultados.</p>
+      <p>Atendendo a esses princípios, o Colégio Interativa criou, em 2001, um Programa de Iniciação Científica que abrange todas as etapas escolares, promovendo a vivência prática da pesquisa científica, orientada por professores.</p>
+      <p>A Iniciação Científica do Colégio Interativa fundamenta-se nas diretrizes da Base Nacional Comum Curricular (BNCC), nos Parâmetros Curriculares Nacionais (PCN) e nos princípios do ensino por investigação.</p>
+
+      <h3>Princípios do Programa</h3>
+      <ul class="art-list">
+        <li>I – a formação progressiva do pensamento científico</li>
+        <li>II – a ética, a autoria e a integridade acadêmica</li>
+        <li>III – o protagonismo estudantil</li>
+        <li>IV – a interdisciplinaridade</li>
+        <li>V – a contextualização social do conhecimento científico</li>
+        <li>VI – a comunicação científica em linguagem adequada a cada etapa</li>
+      </ul>
+
+      <h3>Diferenciais do Programa</h3>
+      <ul class="art-list">
+        <li>Formação continuada de professores para o desenvolvimento de projetos de pesquisa em todos os segmentos, da Educação Infantil ao Ensino Médio</li>
+        <li>Aulas semanais de Iniciação Científica (Fundamental Anos Finais e Anos Iniciais)</li>
+        <li>Orientação Científica no Ensino Médio</li>
+        <li>Orientação de projetos conforme área de interesse do estudante</li>
+        <li>Mostra de Monografias (9º ano EFAF)</li>
+        <li>Estrutura institucional de apoio à pesquisa</li>
+        <li>Comitê de Revisão Científica (CRC)</li>
+        <li>FAITEC – Fundo de Apoio à Iniciação Tecnológica, Científica e Cultural</li>
+        <li>FITEC – Feira de Inovação, Tecnologia e Ciências</li>
+        <li>Participação em feiras de ciências nacionais e internacionais</li>
+      </ul>
+    </section>
+
+    <!-- Seção 2 -->
+    <section id="sec2">
+      <div class="section-eyebrow">Seção 2</div>
+      <h2>Organização curricular, estrutura e funcionamento</h2>
+
+      <h3>Art. 1º — Eixos do Programa</h3>
+      <p>O Programa de Iniciação Científica do Colégio Interativa é estruturado a partir de dois eixos complementares e indissociáveis:</p>
+      <ul class="art-list">
+        <li>I – o componente curricular de Iniciação Científica</li>
+        <li>II – Orientação de projetos</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Componente curricular de IC</h3>
+      <p>O componente curricular de Iniciação Científica tem como finalidade o desenvolvimento progressivo da cultura científica, da postura investigativa e da alfabetização científica dos estudantes, respeitando as especificidades pedagógicas de cada segmento de ensino.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Orientação de projetos</h3>
+      <p>A orientação de projetos consiste no acompanhamento sistemático dos projetos desenvolvidos pelos estudantes, com foco na execução das investigações, na tomada de decisões metodológicas e na consolidação dos produtos finais da pesquisa.</p>
+    </section>
+
+    <!-- Seção 3 -->
+    <section id="sec3">
+      <div class="section-eyebrow">Seção 3</div>
+      <h2>Iniciação Científica no Ensino Fundamental Anos Iniciais (EFAI)</h2>
+
+      <h3>Art. 1º — Formato das aulas</h3>
+      <p>A Iniciação Científica no EFAI é disposta em aulas semanais de laboratório para o desenvolvimento de experimentações que objetivam a resolução de questões-problema.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Projeto coletivo por turma</h3>
+      <p>O desenvolvimento da pesquisa científica ocorrerá por meio de um projeto coletivo por turma, elaborado e executado de forma colaborativa pelos estudantes.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> O projeto coletivo deverá contemplar as etapas fundamentais da investigação científica, de maneira progressiva e adequada ao nível de desenvolvimento dos alunos.</li>
+        <li><strong>§2º</strong> A temática do projeto será definida coletivamente, considerando os interesses dos estudantes e os objetivos de aprendizagem previstos para a etapa.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Papel das professoras-tutoras</h3>
+      <p>As professoras-tutoras da turma atuarão como mediadoras do processo de pesquisa, acompanhando os estudantes durante todas as etapas do desenvolvimento do projeto. Compete às professoras-tutoras:</p>
+      <ul class="art-list">
+        <li>I – estimular a curiosidade científica e o protagonismo dos estudantes</li>
+        <li>II – organizar os registros do processo investigativo</li>
+        <li>III – promover a articulação entre o projeto de pesquisa e os conteúdos trabalhados em sala de aula</li>
+        <li>IV – desenvolver questões-problema pautadas no desenvolvimento de habilidades científicas</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 4º — Professores de IC e Ciências no EFAI</h3>
+      <p>As professoras-tutoras contarão com o apoio pedagógico dos(as) professores(as) de Iniciação Científica e Ciências. Compete a esses professores:</p>
+      <ul class="art-list">
+        <li>I – orientar metodologicamente o desenvolvimento do projeto</li>
+        <li>II – assegurar a adequação do projeto aos princípios da pesquisa científica</li>
+        <li>III – apoiar as professoras-tutoras na condução das atividades investigativas</li>
+        <li>IV – sistematizar os conhecimentos construídos pelos alunos</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 5º — Orientação de projetos no EFAI</h3>
+      <p>O desenvolvimento da Iniciação Científica no EFAI deverá priorizar práticas investigativas, experimentação orientada, registros sistemáticos e socialização dos resultados.</p>
+      <p><strong>Parágrafo único:</strong> A disciplina de orientação de projetos será executada de maneira conjunta pelos(as) professores(as) dos componentes curriculares de Iniciação Científica e Ciências e pela tutora da turma. Não há disciplina de Orientação de projetos separada no EFAI.</p>
+    </section>
+
+    <!-- Seção 4 -->
+    <section id="sec4">
+      <div class="section-eyebrow">Seção 4</div>
+      <h2>Iniciação Científica no EFAF e Ensino Médio</h2>
+
+      <h3>Art. 1º — Estrutura progressiva</h3>
+      <p>A Iniciação Científica do EFAF está estruturada de forma progressiva, respeitando o desenvolvimento pedagógico e científico dos estudantes.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Componente de IC (6º, 7º e 8º anos)</h3>
+      <p>O componente de Iniciação Científica é ofertado aos estudantes do 6º, 7º e 8º anos do EFAF, por meio de <strong>aula semanal com duração de 70 minutos</strong>, integrando a grade curricular obrigatória.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> As aulas de IC têm como finalidade o desenvolvimento de competências investigativas, metodológicas e comunicativas.</li>
+        <li><strong>§2º</strong> O conteúdo programático é constituído pelo desenvolvimento procedimental das habilidades previstas no componente curricular de Ciências.</li>
+        <li><strong>§3º</strong> Não há desenvolvimento de projeto de pesquisa científica como culminância desta disciplina.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Componente de Orientação de projetos (6º, 7º e 8º anos)</h3>
+      <p>O componente de Orientação de projetos é ofertado aos estudantes do 6º, 7º e 8º anos do EFAF, por meio de <strong>aula semanal com duração de 70 minutos</strong>, integrando a grade curricular obrigatória.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> São realizados encontros de orientação, destinados ao desenvolvimento de projetos de pesquisa.</li>
+        <li><strong>§2º</strong> Nos 6º e 7º anos os encontros de orientação são ministrados por um orientador por turma.</li>
+        <li><strong>§3º</strong> No 8º ano os encontros são regidos por dois orientadores por turma.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 4º — 9º ano do EFAF</h3>
+      <p>No 9º ano do EFAF, a iniciação científica ocorre através de uma <strong>aula semanal de 70 minutos</strong> no componente de Orientação de projetos, integrando a grade curricular obrigatória.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Não é ofertado o componente curricular de Iniciação Científica.</li>
+        <li><strong>§2º</strong> Os encontros de orientação ocorrerão de forma presencial e serão conduzidos por professores orientadores do programa.</li>
+        <li><strong>§3º</strong> O desenvolvimento da pesquisa culmina na elaboração da monografia, apresentada publicamente na Mostra de Monografias, conforme normas específicas estabelecidas neste Regimento.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 5º — Ensino Médio</h3>
+      <p>No Ensino Médio, a Iniciação Científica é ofertada na forma de <strong>disciplina eletiva</strong>, cuja escolha é realizada pelos estudantes no início do ano letivo, conforme a organização curricular do Colégio Interativa.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Uma vez incluída na grade do estudante, a disciplina passa a ter caráter obrigatório, devendo o aluno cumprir os critérios de assiduidade e realização das atividades avaliativas, conforme o PPP da instituição.</li>
+        <li><strong>§2º</strong> O desenvolvimento das pesquisas no Ensino Médio ocorre prioritariamente por meio de encontros de orientação presenciais, não havendo aula regular de IC integrada à grade semanal.</li>
+        <li><strong>§3º</strong> Os encontros de orientação serão realizados por professores orientadores do Programa de Iniciação Científica.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 6º — Espaços de realização</h3>
+      <p>As atividades da Iniciação Científica poderão ocorrer em salas de aula, laboratórios, Espaço Maker ou outros ambientes pedagógicos adequados, conforme a natureza da pesquisa, a linha de investigação do orientador e as normas de segurança da instituição.</p>
+      <p><strong>Parágrafo único:</strong> Todos os encontros de orientação e atividades práticas deverão ocorrer presencialmente, salvo exceções previamente autorizadas pela Coordenação de Iniciação Científica.</p>
+    </section>
+
+    <!-- Seção 5 -->
+    <section id="sec5">
+      <div class="section-eyebrow">Seção 5</div>
+      <h2>Normas gerais para o desenvolvimento dos projetos</h2>
+
+      <h3>Art. 1º — Requisitos de todo projeto</h3>
+      <p>Todo projeto de pesquisa deverá:</p>
+      <ul class="art-list">
+        <li>I – possuir até três estudantes autores</li>
+        <li>II – contar com professor orientador habilitado</li>
+        <li>III – estar vinculado a uma área do conhecimento</li>
+        <li>IV – seguir as etapas previstas no Manual do Jovem Pesquisador</li>
+        <li>V – manter registros contínuos no Diário de Bordo</li>
+        <li>VI – ser documentado no Google Drive Compartilhado da Iniciação Científica</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Fases obrigatórias</h3>
+      <p>Os projetos desenvolvem-se, obrigatoriamente, nas seguintes fases:</p>
+      <ol class="fase-list">
+        <li>
+          <div class="fase-num">1</div>
+          <div class="fase-body"><strong>Definição do tema junto ao(a) orientador(a)</strong></div>
+        </li>
+        <li>
+          <div class="fase-num">2</div>
+          <div class="fase-body"><strong>Elaboração do Plano de Pesquisa</strong></div>
+        </li>
+        <li>
+          <div class="fase-num">3</div>
+          <div class="fase-body">
+            <strong>Execução da pesquisa e análise de dados</strong>
+            <ul class="fase-sub">
+              <li>3.1 – Coleta e Análise de dados</li>
+              <li>3.2 – Resultados</li>
+              <li>3.3 – Discussão</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="fase-num">4</div>
+          <div class="fase-body"><strong>Socialização e divulgação científica</strong></div>
+        </li>
+      </ol>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Google Drive Compartilhado</h3>
+      <p>Todo projeto possui uma pasta no Google Drive Compartilhado da IC, gerenciada pelos autores e pelo(a) professor(a) orientador(a) da turma.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Essa pasta deve conter e manter atualizados: relatórios, monografias, slides de apresentação, banner, materiais bibliográficos e produções digitais.</li>
+        <li><strong>§2º</strong> O compartilhamento da pasta será feito por meio do e-mail institucional de alunos e professores.</li>
+        <li><strong>§3º</strong> Alunos transferidos e orientadores que se desligarem da instituição serão desvinculados da pasta de gerenciamento.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 4º — Fases detalhadas</h3>
+      <p>As pesquisas devem ser conduzidas em quatro fases sucessivas, conforme cronograma estabelecido no plano de pesquisa. (Ver Art. 2º acima.)</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 5º — Participação em projetos</h3>
+      <p>Cada estudante poderá participar de apenas um projeto de cada vez. Os projetos com duração acima de 12 (doze) meses devem ser fragmentados em fases.</p>
+    </section>
+
+    <!-- Seção 6 -->
+    <section id="sec6">
+      <div class="section-eyebrow">Seção 6</div>
+      <h2>Avaliação nas disciplinas de IC e Orientação</h2>
+
+      <h3>Art. 1º — Avaliação processual</h3>
+      <p>A disciplina de Orientação dá suporte teórico e prático às pesquisas e não possui avaliação por prova teórica. A avaliação é processual, formativa e cumulativa, considerando:</p>
+      <ul class="art-list">
+        <li>I – engajamento nas atividades</li>
+        <li>II – qualidade dos registros</li>
+        <li>III – coerência metodológica</li>
+        <li>IV – evolução do projeto</li>
+        <li>V – comunicação científica</li>
+      </ul>
+      <ul class="art-list">
+        <li><strong>§2º</strong> As atividades avaliativas são registradas na plataforma institucional pelos orientadores dos projetos.</li>
+        <li><strong>§3º</strong> A avaliação progressiva é dada através da atribuição de notas por desempenho, assertividade e assiduidade nos encontros de orientação, conforme rubrica definida e divulgada aos pais, responsáveis e estudantes no início do trimestre.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Recuperação</h3>
+      <p>As notas nas atividades avaliativas das disciplinas de IC e Orientação não estão sujeitas à recuperação por prova teórica.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> O aluno somente poderá recuperar suas notas nas avaliações do trimestre seguinte.</li>
+        <li><strong>§2º</strong> No caso do último trimestre do ano letivo, os alunos com média anual inferior a 65 pontos poderão realizar uma atividade de recuperação final definida pelo orientador do projeto.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 7 -->
+    <section id="sec7">
+      <div class="section-eyebrow">Seção 7</div>
+      <h2>Ética na pesquisa, autoria e condutas inadequadas</h2>
+
+      <h3>Art. 1º — Princípio fundamental</h3>
+      <p>A integridade científica é o princípio fundamental do Programa de Iniciação Científica. Fraudes e má conduta não serão toleradas em nenhuma etapa do desenvolvimento dos projetos.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — O que é fraude científica</h3>
+      <p>Considera-se fraude científica qualquer ato intencional que comprometa a veracidade, originalidade ou integridade dos dados e resultados. São exemplos de fraude científica, sem prejuízo de outras condutas similares:</p>
+      <ul class="art-list">
+        <li>I – Plágio, entendido como a cópia parcial ou integral de textos, imagens ou ideias sem a devida referência</li>
+        <li>II – Falsificação de dados ou resultados</li>
+        <li>III – Fabricação de dados inexistentes</li>
+        <li>IV – Apresentação de trabalho alheio como sendo de autoria própria</li>
+        <li>V – Supressão de autores legítimos ou inclusão de autores que não contribuíram efetivamente</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Propriedade intelectual</h3>
+      <p>O Colégio se reserva o direito de dar prosseguimento às pesquisas descontinuadas ou abandonadas por alunos e/ou orientadores que se desvincularem da instituição, dando referência da participação dos mesmos.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Nos termos do art. 49, inciso I, da Lei de Direitos Autorais (Lei nº 9.610/1998), os direitos patrimoniais sobre todas as pesquisas e projetos desenvolvidos no âmbito do Programa de IC pertencerão exclusivamente ao Colégio.</li>
+        <li><strong>§2º</strong> O Colégio poderá utilizar os referidos projetos, a qualquer tempo, em seu benefício, inclusive em ações de marketing, propaganda e divulgação institucional, isento de qualquer pagamento ao aluno pesquisador, seus responsáveis legais, bem como ao orientador ou coorientador.</li>
+        <li><strong>§3º</strong> O direito mencionado aplica-se igualmente às pesquisas desativadas ou abandonadas, ainda que parcialmente executadas, por qualquer membro desvinculado do Colégio.</li>
+        <li><strong>Parágrafo único:</strong> Casos omissos ou dúvidas quanto à autoria, continuidade, divisão de projetos ou possíveis condutas antiéticas deverão ser encaminhadas à Coordenação de IC, que deliberará em conjunto com o CRC e, se necessário, com a direção pedagógica.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 4º — Conformidade ética</h3>
+      <p>Todos os projetos devem obedecer rigorosamente aos princípios da ética científica, conforme disposto no Manual do Jovem Pesquisador e no Manual do Orientador.</p>
+    </section>
+
+    <!-- Seção 8 -->
+    <section id="sec8">
+      <div class="section-eyebrow">Seção 8</div>
+      <h2>Parceria e pesquisa em instituições externas</h2>
+
+      <h3>Art. 1º — Condições para parceria</h3>
+      <p>Os projetos do Programa de IC poderão ser realizados em parceria com universidades, centros de pesquisa ou empresas, desde que respeitadas as normas institucionais, éticas e pedagógicas previstas neste regimento.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Nos casos em que estudantes do Ensino Médio forem contemplados com bolsas de fomento à pesquisa, a formalização da parceria ocorrerá por meio de plano de trabalho elaborado pelo professor da instituição parceira, cabendo a este a responsabilidade pelo gerenciamento técnico do projeto.</li>
+        <li><strong>§2º</strong> Os resultados obtidos durante a execução de projetos com vínculo formal a IES serão de propriedade da instituição parceira, assegurada a autoria do(a) aluno(a) do Colégio Interativa, conforme critérios acadêmicos estabelecidos.</li>
+        <li><strong>§3º</strong> Os resultados das pesquisas poderão ser submetidos à publicação científica, na forma de artigos em revistas indexadas, a critério dos orientadores responsáveis, desde que haja alinhamento prévio com o(a) aluno(a) pesquisador(a) e com o Colégio Interativa.</li>
+        <li><strong>§4º</strong> O material de autoria do(a) aluno(a), previamente previsto no plano de pesquisa e alinhado com o grupo de pesquisa parceiro, poderá ser divulgado em feiras de ciências nacionais e internacionais, desde que haja autorização expressa e comunicação formal ao orientador da universidade parceira e ao co-orientador do Colégio.</li>
+        <li><strong>§5º</strong> Para projetos desenvolvidos em parceria com universidades sem concessão de bolsas de fomento, é obrigatório o preenchimento e a aprovação do <em>Termo de Cooperação de Pesquisa (Anexo I)</em>, antes do início das atividades.</li>
+        <li><strong>Parágrafo único:</strong> A utilização de qualquer material, ideia, imagem, dado, resultado ou contribuição externa ao grupo de pesquisa deverá ser explicitamente referenciada, em conformidade com as normas técnicas e éticas vigentes, com a devida identificação dos autores originais e das fontes utilizadas, sob pena de caracterização de conduta antiética.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 9 -->
+    <section id="sec9">
+      <div class="section-eyebrow">Seção 9</div>
+      <h2>Da FITEC: Feira de Inovação, Tecnologia e Ciência</h2>
+
+      <h3>Subseção I — Natureza e organização</h3>
+
+      <h4>Art. 1º — O que é a FITEC</h4>
+      <p>A FITEC: Feira de Inovação, Tecnologia e Ciência é um evento acadêmico-científico de abrangência nacional, organizado pelo <strong>Instituto Trilhar</strong>, entidade sem fins lucrativos, não integrante da estrutura administrativa, pedagógica ou institucional do Colégio Interativa.</p>
+      <p><strong>Parágrafo único:</strong> A FITEC teve início no ano de 2002, sob a denominação de SITEC: Simpósio Interativa de Tecnologia e Ciência, com abrangência restrita ao âmbito escolar. A partir de 2019, passou a ser denominada FITEC, assumindo caráter nacional e organização independente, sendo de responsabilidade e realização atribuída ao Instituto Trilhar.</p>
+
+      <h4>Art. 2º — Objetivo da FITEC</h4>
+      <p>O objetivo central da FITEC é promover a divulgação científica, a inovação e o intercâmbio acadêmico entre estudantes e pesquisadores, por meio da apresentação de projetos de pesquisa oriundos de diferentes instituições de ensino.</p>
+
+      <hr class="art-divider">
+      <h3>Subseção II — Participação dos estudantes do Colégio Interativa</h3>
+
+      <h4>Art. 3º — Obrigatoriedade</h4>
+      <p>A participação de estudantes do Colégio Interativa na FITEC é obrigatória, estabelecida como a culminância final do componente de orientação de projetos.</p>
+
+      <h4>Art. 4º — Prazos internos</h4>
+      <p>Para garantir a participação na FITEC, os projetos desenvolvidos no Colégio Interativa deverão cumprir os prazos internos definidos pela instituição em consonância com o edital externo da feira.</p>
+
+      <h4>Art. 5º — Anuência obrigatória</h4>
+      <p>Toda inscrição de projeto vinculado ao Colégio Interativa deverá, obrigatoriamente, contar com a anuência do(a) professor(a) orientador(a) e da Coordenação de Iniciação Científica, observadas as normas institucionais e éticas da pesquisa escolar.</p>
+
+      <hr class="art-divider">
+      <h3>Subseção III — Formas de participação e categorias</h3>
+
+      <h4>Art. 6º — Formas de participação</h4>
+      <p>As formas de participação na FITEC são definidas exclusivamente pelo regulamento do evento.</p>
+
+      <h4>Art. 7º — Categorias</h4>
+      <p>As categorias de participação são estabelecidas pela organização da FITEC e, quando aplicável aos projetos do Colégio Interativa, compreendem:</p>
+      <ul class="art-list">
+        <li>I – Ensino Fundamental Anos Finais</li>
+        <li>II – Ensino Médio e Ensino Médio Técnico</li>
+        <li>III – Educação Infantil e Ensino Fundamental Anos Iniciais</li>
+      </ul>
+
+      <hr class="art-divider">
+      <h3>Subseção IV — Materiais e áreas do conhecimento</h3>
+
+      <h4>Art. 8º — Materiais exigidos</h4>
+      <p>Para as categorias Ensino Fundamental Anos Finais e Ensino Médio, a FITEC poderá exigir, conforme edital vigente:</p>
+      <ul class="art-list">
+        <li>I – Diário de Bordo</li>
+        <li>II – Banner</li>
+        <li>III – Relatório Final</li>
+      </ul>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Os projetos deverão estar enquadrados nas áreas do conhecimento definidas pela organização da FITEC.</li>
+        <li><strong>§2º</strong> A área do conhecimento deverá ser informada no ato da inscrição, conforme orientações do edital do evento.</li>
+      </ul>
+
+      <hr class="art-divider">
+      <h3>Subseção V — Avaliação e premiação</h3>
+
+      <h4>Art. 9º — Avaliação externa</h4>
+      <p>A avaliação dos projetos apresentados na FITEC é de responsabilidade exclusiva da organização do evento, sendo realizada por bancas compostas por avaliadores externos.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Os critérios de avaliação são definidos pelo Comitê de Avaliação da FITEC e poderão contemplar, entre outros aspectos: fundamentação teórica, coerência entre objetivos e metodologia, resultados apresentados e qualidade da apresentação.</li>
+        <li><strong>§2º</strong> As premiações, credenciamentos e menções honrosas são concedidos conforme os critérios estabelecidos pela organização da FITEC.</li>
+        <li><strong>§3º</strong> Nos projetos da categoria Educação Infantil e EFAI, a forma de participação e premiação observará as diretrizes específicas do evento, não se submetendo, necessariamente, ao processo avaliativo competitivo.</li>
+      </ul>
+
+      <hr class="art-divider">
+      <h3>Subseção VI — Credenciamentos e vínculo institucional</h3>
+
+      <h4>Art. 10 — Vínculo para credenciamento</h4>
+      <p>Caso projetos desenvolvidos por estudantes do Colégio Interativa obtenham credenciamento para feiras externas por meio da FITEC, a participação no evento subsequente estará condicionada à manutenção da matrícula na instituição e à continuidade da pesquisa premiada.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> O direito à credencial para feiras externas é ligado à propriedade intelectual do projeto, que por sua vez é atribuída ao Colégio Interativa.</li>
+        <li><strong>Parágrafo único:</strong> Em caso de transferência do(a) estudante para outra instituição de ensino, o credenciamento obtido será redistribuído conforme critérios definidos pela organização da FITEC.</li>
+      </ul>
+
+      <h4>Art. 11 — Alteração significativa de projeto credenciado</h4>
+      <p>Caso o projeto credenciado comunique interesse na modificação significativa da linha de pesquisa e escopo do trabalho, a manutenção da credencial deverá ser avaliada por banca interna composta pelo Comitê de Revisão Científica, a Coordenação de IC e a Direção Pedagógica.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> A manutenção da credencial será permitida desde que os autores do projeto apresentem um cronograma reformulado com tempo hábil para execução de um projeto de igual ou superior padrão que o projeto anterior.</li>
+        <li><strong>§2º</strong> Fica vetada a manutenção da credencial para projetos com alteração significativa e falha no cumprimento das normativas estabelecidas neste regimento.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 10 -->
+    <section id="sec10">
+      <div class="section-eyebrow">Seção 10</div>
+      <h2>Inscrição e participação em eventos científicos externos</h2>
+
+      <h3>Art. 1º — Condições gerais</h3>
+      <p>Todas as pesquisas desenvolvidas no âmbito do Programa de IC são passíveis de inscrição em eventos científicos externos, desde que observados os critérios institucionais estabelecidos neste Regimento.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> A inscrição do projeto em eventos externos está condicionada à aprovação prévia do(a) professor(a) orientador(a) e da Coordenação de IC.</li>
+        <li><strong>§2º</strong> Não é permitida a inscrição direta de projetos em eventos que não estejam previstos no calendário anual de participação da escola, excetuando-se:
+          <ul style="margin-top: 0.35rem; padding-left: 1rem; list-style: none;">
+            <li>I – eventos de caráter local, realizados no município de Londrina</li>
+            <li>II – eventos realizados integralmente em formato online</li>
+          </ul>
+        </li>
+        <li><strong>Parágrafo único:</strong> Para a participação em eventos externos, é obrigatória a conclusão da <strong>Fase 3.1: Coleta e Análise de Dados</strong>. A inscrição, o cumprimento de prazos e o preenchimento de formulários são de responsabilidade exclusiva dos autores do projeto. Após a efetivação da inscrição, o(a) orientador(a) deverá comunicar formalmente à Coordenação de IC.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Após seleção como finalista</h3>
+      <p>Após a seleção do projeto como finalista, a Coordenação de IC será responsável por apresentar aos pais e/ou responsáveis o orçamento estimado e as orientações gerais relativas ao evento.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> A ausência de resposta aos contatos realizados pela Coordenação inviabiliza a participação do projeto no evento.</li>
+        <li><strong>§2º</strong> Compete à Coordenação de IC comunicar a aprovação do projeto, repassar as orientações sobre a participação e elaborar o plano de viagem, encaminhado às famílias após aprovação da direção pedagógica.</li>
+        <li><strong>§3º</strong> O itinerário de viagem será definido pela direção pedagógica, priorizando horários diurnos, escalas reduzidas em aeroportos, bem como a saúde, a segurança e o bem-estar dos participantes.</li>
+        <li><strong>§4º</strong> A participação de familiares em eventos científicos externos somente será permitida mediante aviso prévio e apresentação de justificativa à Coordenação de IC, sendo vedada a participação integral destes na programação oficial junto aos alunos.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Professor(a) acompanhante</h3>
+      <p>O acompanhamento institucional dos estudantes em feiras científicas externas será realizado por um(a) representante da gestão ou liderança pedagógica, designado(a) oficialmente pela Direção Pedagógica do Colégio Interativa.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> O(A) professor(a) orientador(a) do projeto poderá manifestar interesse em atuar como acompanhante da delegação, devendo sinalizar formalmente essa intenção à Coordenação de IC.</li>
+        <li><strong>§2º</strong> A Coordenação de IC avaliará a solicitação e encaminhará parecer à Direção Pedagógica, a quem compete a decisão final.</li>
+        <li><strong>§3º</strong> Nos casos de participação em feiras científicas internacionais, será atribuída prioridade máxima para que o(a) acompanhante seja o(a) professor(a) orientador(a) do projeto.</li>
+        <li><strong>§4º</strong> A definição do(a) acompanhante levará em consideração critérios técnicos, pedagógicos, logísticos e financeiros, bem como a representatividade institucional do Colégio Interativa no evento.</li>
+        <li><strong>§5º</strong> Caso o projeto obtenha credenciamento para outro evento por meio de premiação em feiras afiliadas, a participação de professor(a) acompanhante estará condicionada à aprovação da direção pedagógica.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 4º — Captação de recursos</h3>
+      <p>A captação de recursos e a obtenção de patrocinadores para o custeio das despesas decorrentes da participação em feiras científicas externas são de responsabilidade exclusiva do(a) aluno(a) interessado(a) e/ou de seus responsáveis legais.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Uma das possibilidades de obtenção de recursos consiste na seleção do(a) estudante para a FAITEC: Fundo de Apoio ao Incentivo à Tecnologia e à Ciência, conforme regulamento próprio.</li>
+        <li><strong>§2º</strong> O Colégio Interativa não se responsabiliza por eventuais alterações nos valores apresentados nos orçamentos previamente encaminhados às famílias.</li>
+        <li><strong>§3º</strong> O Colégio Interativa reserva-se o direito de vetar a associação de seu nome e de sua imagem institucional a marcas patrocinadoras vinculadas a produtos ou serviços destinados a maiores de 18 (dezoito) anos.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 11 -->
+    <section id="sec11">
+      <div class="section-eyebrow">Seção 11</div>
+      <h2>Conduta e responsabilidades do(a) professor(a) orientador(a)</h2>
+
+      <h3>Art. 1º — Apoio aos orientandos</h3>
+      <p>As práticas do(a) professor(a) orientador(a) devem apoiar os(as) estudantes orientandos(as), assegurando a viabilidade teórica e prática dos projetos de pesquisa, em conformidade com as orientações previstas no Manual do Jovem Pesquisador.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Ética, segurança e registros</h3>
+      <p>Os atendimentos de orientação devem priorizar a ética, a integridade científica e a segurança dos estudantes.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> É imprescindível garantir a adoção de práticas seguras, especialmente em atividades laboratoriais, com o uso adequado de Equipamentos de Proteção Individual (EPIs).</li>
+        <li><strong>§2º</strong> Compete ao(à) professor(a) orientador(a) solicitar, acompanhar e orientar os registros das atividades desenvolvidas no Diário de Bordo.</li>
+        <li><strong>§3º</strong> É de responsabilidade do(a) orientador(a) registrar as principais ocorrências acadêmicas relacionadas à pesquisa na plataforma digital institucional.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Postura pedagógica ativa</h3>
+      <p>O(A) professor(a) orientador(a) deve manter postura pedagógica ativa e comunicar à Coordenação de IC as situações que envolvam condutas inadequadas, baixo rendimento, dúvidas relativas à participação em eventos científicos ou quaisquer outras ocorrências pertinentes ao desenvolvimento da pesquisa.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 4º — Pesquisas de risco</h3>
+      <p>O(A) orientador(a) deve conhecer e aplicar os regulamentos institucionais referentes a pesquisas de risco, especialmente aquelas que envolvam produtos químicos, equipamentos, experimentação, seres humanos ou micro-organismos, assegurando a conformidade ética e legal dos projetos orientados.</p>
+    </section>
+
+    <!-- Seção 12 -->
+    <section id="sec12">
+      <div class="section-eyebrow">Seção 12</div>
+      <h2>Direitos e deveres do aluno pesquisador</h2>
+
+      <h3>Art. 1º — Responsabilidades do estudante</h3>
+      <p>O(A) estudante pesquisador(a) é responsável pelo gerenciamento dos diferentes aspectos de sua pesquisa, incluindo a realização de consultas bibliográficas, o registro sistemático no Diário de Bordo, a obtenção de materiais específicos e a execução das atividades previstas no projeto.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Integridade científica</h3>
+      <p>A fraude científica e quaisquer formas de má conduta não serão toleradas em nenhuma etapa da pesquisa ou em processos de avaliação e competição científica.</p>
+      <p><strong>Parágrafo único:</strong> Consideram-se formas de má conduta, entre outras: plágio, falsificação de informações, fabricação de dados, bem como o uso ou a apresentação de trabalhos de terceiros como sendo de autoria própria.</p>
+    </section>
+
+    <!-- Seção 13 -->
+    <section id="sec13">
+      <div class="section-eyebrow">Seção 13</div>
+      <h2>Normas de segurança e uso dos espaços de pesquisa</h2>
+
+      <h3>Art. 1º — Responsabilidade coletiva</h3>
+      <p>Estudantes e professores orientadores devem zelar pela segurança em todos os espaços destinados às atividades de pesquisa, incluindo salas de aula, laboratórios e Espaço Maker.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> É responsabilidade dos autores identificar adequadamente todos os materiais utilizados nas pesquisas. Materiais sem identificação poderão ser descartados sem aviso prévio.</li>
+        <li><strong>§2º</strong> Atividades que envolvam qualquer tipo de risco devem ser supervisionadas por um adulto responsável. Procedimentos realizados sem autorização do(a) orientador(a) ou responsável institucional poderão resultar na aplicação de medidas pedagógicas e, quando necessário, na responsabilização financeira, incluindo o ressarcimento por danos causados, a cargo da família.</li>
+        <li><strong>§3º</strong> É proibido o consumo de alimentos e bebidas nos espaços destinados às atividades de pesquisa.</li>
+        <li><strong>§4º</strong> O uso de Equipamentos de Proteção Individual (EPIs), tais como jalecos e luvas, é obrigatório durante a realização de atividades laboratoriais.</li>
+        <li><strong>§5º</strong> Em caso de acidente, o(a) professor(a) orientador(a) deverá acionar imediatamente a Coordenação de IC, a fim de garantir o atendimento adequado e imediato ao(à) estudante.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 14 — Laboratório -->
+    <section id="sec14-lab">
+      <div class="section-eyebrow">Seção 14</div>
+      <h2>Normas específicas do laboratório</h2>
+
+      <h3>Art. 1º — Uso coletivo</h3>
+      <p>O laboratório constitui espaço de uso coletivo, destinado à realização de aulas e práticas de pesquisa, sendo responsabilidade de todos os usuários zelar por sua conservação, organização e uso adequado.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Materiais</h3>
+      <p>Os materiais de uso coletivo, empregados em aulas ou atividades de pesquisa, são fornecidos pela instituição. Os materiais específicos dos projetos são de responsabilidade dos(as) estudantes e de seus responsáveis legais.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Descarte de resíduos</h3>
+      <p>É vedado o descarte de líquidos contaminantes ou solventes na pia. Esses resíduos deverão ser depositados nos galões apropriados para descarte, os quais serão recolhidos por empresas devidamente certificadas.</p>
+      <p><strong>Parágrafo único:</strong> Para o uso de substâncias controladas por legislação específica, é obrigatória a solicitação por meio do Cadastro e Licença para Controle de Produtos Químicos da Polícia Federal, procedimento a ser gerenciado pelo setor administrativo da escola.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 4º — Inventário anual</h3>
+      <p>Ao final do ano letivo, a liderança da área, com o apoio dos professores envolvidos, será responsável pela atualização do inventário de equipamentos, materiais e vidrarias do laboratório.</p>
+    </section>
+
+    <!-- Seção 15 — CRC -->
+    <section id="sec14-crc">
+      <div class="section-eyebrow">Seção 15</div>
+      <h2>Comitê de Revisão Científica (CRC)</h2>
+
+      <h3>Art. 1º — Competências do CRC</h3>
+      <p>O Comitê de Revisão Científica (CRC) é um colegiado responsável pela avaliação, acompanhamento e validação das atividades de pesquisa desenvolvidas no âmbito do Programa de IC do Colégio Interativa. Compete ao CRC garantir:</p>
+      <ul class="art-list">
+        <li>I – a segurança dos estudantes envolvidos nas pesquisas</li>
+        <li>II – a adequação dos projetos aos critérios éticos e científicos reconhecidos em âmbito nacional e internacional</li>
+        <li>III – a conformidade dos projetos com as normas e exigências das feiras científicas e eventos acadêmicos dos quais o Colégio Interativa participe</li>
+        <li>IV – a análise e o parecer sobre projetos que envolvam riscos, parcerias externas, pesquisas sensíveis ou exigências específicas de comitês externos</li>
+      </ul>
+    </section>
+
+    <!-- Seção 16 — Mostra de Monografias -->
+    <section id="sec15">
+      <div class="section-eyebrow">Seção 16</div>
+      <h2>Mostra de Monografias</h2>
+
+      <h3>Art. 1º — Características do evento</h3>
+      <p>A Mostra de Monografias é um evento anual, de caráter institucional, destinado exclusivamente aos estudantes do <strong>9º ano do Ensino Fundamental Anos Finais</strong>, com os seguintes objetivos:</p>
+      <ul class="art-list">
+        <li>I – concluir o percurso formativo da disciplina de Iniciação Científica no segmento</li>
+        <li>II – socializar os resultados das pesquisas desenvolvidas ao longo do ano letivo junto à comunidade escolar</li>
+        <li>III – incentivar a continuidade dos estudantes no Programa de IC durante o Ensino Médio</li>
+      </ul>
+      <ul class="art-list">
+        <li><strong>§1º</strong> A Mostra de Monografias ocorre, preferencialmente, no período noturno e constitui <strong>atividade avaliativa obrigatória</strong> do componente curricular de Iniciação Científica.</li>
+        <li><strong>§2º</strong> As apresentações deverão ocorrer na modalidade de comunicação oral, acompanhadas da entrega da versão impressa da monografia, conforme orientações definidas pela Coordenação de IC.</li>
+        <li><strong>§3º</strong> O acompanhamento da elaboração das monografias será realizado de forma contínua e mensal, no âmbito da disciplina de Orientação, sob a responsabilidade do(a) professor(a) orientador(a).</li>
+      </ul>
+    </section>
+
+    <!-- Seção 17 — Programa de Alto Rendimento -->
+    <section id="sec16">
+      <div class="section-eyebrow">Seção 17</div>
+      <h2>Programa de Alto Rendimento na IC</h2>
+
+      <h3>Art. 1º — Caracterização</h3>
+      <p>O Programa de Alto Rendimento na Iniciação Científica caracteriza-se como uma ação extracurricular, destinada a estudantes com alto desempenho acadêmico, investigativo e socioemocional, que demonstrem potencial para aprofundamento teórico-metodológico, produção científica continuada e participação qualificada em eventos científicos.</p>
+
+      <hr class="art-divider">
+
+      <h3>Art. 2º — Ingresso</h3>
+      <p>O ingresso no Programa de Alto Rendimento ocorrerá exclusivamente por <strong>indicação formal do(a) professor(a) orientador(a)</strong>, mediante avaliação do desempenho do(a) estudante no âmbito do Programa de IC regular.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> A indicação deverá considerar, entre outros aspectos:
+          <ul style="margin-top: 0.35rem; padding-left: 1rem; list-style: none;">
+            <li>I – compromisso com a pesquisa e assiduidade nos encontros de orientação</li>
+            <li>II – qualidade metodológica do projeto desenvolvido</li>
+            <li>III – postura ética, autonomia intelectual e responsabilidade acadêmica</li>
+            <li>IV – capacidade de trabalho em equipe e respeito às normas institucionais</li>
+          </ul>
+        </li>
+        <li><strong>§2º</strong> A efetivação do ingresso estará condicionada à análise e aprovação da Coordenação de IC, podendo ser submetida, quando necessário, à apreciação da Direção Pedagógica.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 3º — Elegibilidade</h3>
+      <p>Poderão integrar o Programa de Alto Rendimento estudantes regularmente matriculados a partir do <strong>8º ano do EFAF e do Ensino Médio</strong>.</p>
+      <ul class="art-list">
+        <li><strong>§1º</strong> Os estudantes integrantes do Programa de Alto Rendimento, desde que atendam aos critérios estabelecidos, poderão participar da FAITEC, observadas as normas específicas previstas em seu regimento interno.</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 4º — Compromissos exigidos</h3>
+      <p>A participação no Programa de Alto Rendimento implica o cumprimento de compromissos pedagógicos e acadêmicos específicos, incluindo, mas não se limitando a:</p>
+      <ul class="art-list">
+        <li>I – manutenção de assiduidade e participação ativa nos encontros de orientação</li>
+        <li>II – cumprimento de prazos e metas estabelecidos no plano de trabalho</li>
+        <li>III – atualização sistemática do Diário de Bordo e dos documentos de pesquisa</li>
+        <li>IV – participação em formações, reuniões e atividades propostas pela Coordenação de IC</li>
+        <li>V – postura ética e responsável em ambientes de pesquisa, eventos científicos e ações institucionais</li>
+        <li>VI – desempenho acadêmico regular nos demais componentes curriculares</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>Art. 5º — Desligamento</h3>
+      <p>O(a) estudante poderá ser desligado(a) do Programa de Alto Rendimento a qualquer tempo, mediante avaliação da Coordenação de IC, nos seguintes casos:</p>
+      <ul class="art-list">
+        <li>I – descumprimento reiterado dos compromissos pedagógicos e acadêmicos assumidos</li>
+        <li>II – queda significativa de rendimento ou abandono das atividades de pesquisa</li>
+        <li>III – condutas incompatíveis com os princípios éticos da pesquisa científica</li>
+        <li>IV – desrespeito às normas institucionais ou às orientações do(a) orientador(a)</li>
+        <li>V – queda significativa no desempenho acadêmico em múltiplos componentes curriculares</li>
+      </ul>
+      <p><strong>Parágrafo único:</strong> O desligamento do Programa de Alto Rendimento não implica na exclusão do estudante do Programa regular de Iniciação Científica.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Regimento Interno de IC · Versão 26/06/2026 · Colégio Interativa · Portal IC Junior
+</footer>
+
+<script>
+  // Highlight sidebar link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.sidebar a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-60px 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

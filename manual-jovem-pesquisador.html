@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual do Jovem Pesquisador — IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #0d2b4e;
+      --navy-mid: #1a4070;
+      --teal:     #2a9d8f;
+      --teal-lt:  #e6f7f5;
+      --amber:    #e9c46a;
+      --bg:       #f4f6f9;
+      --white:    #ffffff;
+      --text:     #1c2a3a;
+      --muted:    #5a6a7a;
+      --border:   #dce3ec;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 60px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .navbar-brand img {
+      height: 36px;
+      width: auto;
+    }
+    .navbar-brand span {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .navbar-breadcrumb {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .navbar-breadcrumb a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 2.5rem 2rem;
+    }
+    .page-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .page-header .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .subtitle {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+    }
+    .header-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .header-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── Layout ── */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: sticky;
+      top: 76px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .sidebar-header {
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1rem;
+    }
+    .nav-group {
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-group:last-child { border-bottom: none; }
+    .nav-group-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding: 0.65rem 1rem 0.3rem;
+    }
+    .sidebar a {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.35rem 1rem 0.35rem 1.25rem;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .sidebar a:hover {
+      background: var(--teal-lt);
+      color: var(--teal);
+      border-left-color: var(--teal);
+    }
+    .sidebar a.active {
+      background: var(--teal-lt);
+      color: var(--teal);
+      border-left-color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* ── Conteúdo ── */
+    .content section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .content section:last-child { margin-bottom: 0; }
+
+    .section-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .content h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--teal);
+      margin-bottom: 1.25rem;
+    }
+    .content h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .content h3:first-of-type { margin-top: 0; }
+    .content h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1rem 0 0.35rem;
+    }
+    .content p {
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .content p:last-child { margin-bottom: 0; }
+
+    /* listas de itens/incisos */
+    .art-list {
+      list-style: none;
+      margin: 0.5rem 0 0.75rem;
+      padding: 0;
+    }
+    .art-list li {
+      padding: 0.3rem 0 0.3rem 1rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 0.25rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .art-list li strong { color: var(--navy); }
+
+    /* fases de pesquisa */
+    .fase-list {
+      list-style: none;
+      margin: 0.75rem 0;
+      padding: 0;
+    }
+    .fase-list > li {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      align-items: flex-start;
+    }
+    .fase-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+    }
+    .fase-body { flex: 1; }
+    .fase-body strong { display: block; font-size: 0.88rem; color: var(--navy); }
+    .fase-sub {
+      list-style: none;
+      margin: 0.25rem 0 0 0;
+      padding: 0;
+    }
+    .fase-sub li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 0.15rem;
+    }
+
+    /* divisor entre itens */
+    .art-divider {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 1.25rem 0;
+    }
+
+    /* infobox rule */
+    .infobox {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .infobox.rule {
+      background: #fff8e1;
+      border: 1px solid #f0c040;
+      border-left: 3px solid #f0c040;
+    }
+    .infobox.tip {
+      background: var(--teal-lt);
+      border: 1px solid #a8dfd9;
+      border-left: 3px solid var(--teal);
+    }
+    .infobox-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .infobox-body { flex: 1; }
+    .infobox-body strong {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.25rem;
+    }
+    .infobox.rule .infobox-body strong { color: #a07800; }
+    .infobox.tip .infobox-body strong { color: var(--teal); }
+
+    /* requisitos checklist */
+    .req-list {
+      list-style: none;
+      margin: 0.5rem 0;
+      padding: 0;
+    }
+    .req-list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      padding: 0.3rem 0;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .req-list li:last-child { border-bottom: none; }
+    .req-list li::before {
+      content: "✓";
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* áreas do conhecimento */
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.6rem;
+      margin: 0.75rem 0;
+    }
+    .area-tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--teal);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      font-size: 0.78rem;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+    footer a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--teal-lt); }
+
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a class="navbar-brand" href="index.html">
+    <img src="logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb">
+    <a href="index.html">Início</a> / <span>Manual do Jovem Pesquisador</span>
+  </div>
+</nav>
+
+<!-- Page header -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Documento oficial</div>
+    <h1>Manual do Jovem Pesquisador</h1>
+    <p class="subtitle">Regras, responsabilidades e orientações para o desenvolvimento de projetos de pesquisa no Colégio Interativa · 2026</p>
+    <div class="header-tags">
+      <span class="header-tag">EF Anos Finais · Ensino Médio</span>
+      <span class="header-tag">Alunos · Famílias · Orientadores</span>
+      <span class="header-tag">Coordenação de IC</span>
+    </div>
+  </div>
+</header>
+
+<!-- Layout -->
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">Navegação</div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Início</div>
+      <a href="#introducao">Introdução</a>
+      <a href="#historia">A história da IC</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Normas do projeto</div>
+      <a href="#sec1">1. Normas gerais</a>
+      <a href="#sec2">2. Responsabilidades dos alunos</a>
+      <a href="#sec3">3. Condutas de pesquisa</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Orientadores</div>
+      <a href="#sec4">4. Sobre os orientadores</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Eventos científicos</div>
+      <a href="#sec5">5. A FITEC</a>
+      <a href="#sec6">6. Eventos externos</a>
+      <a href="#sec7">7. FAITEC</a>
+    </div>
+  </aside>
+
+  <!-- Conteúdo -->
+  <main class="content">
+
+    <!-- Introdução -->
+    <section id="introducao">
+      <div class="section-eyebrow">Documento oficial · Manual do Jovem Pesquisador 2026</div>
+      <h2>Introdução</h2>
+      <p>Você já pensou em ser cientista? No Colégio Interativa, nós temos um Programa de Iniciação Científica. Para ajudá-lo(a) a entender os diversos aspectos que envolvem a realização dos projetos, você está recebendo o <strong>Manual do Jovem Pesquisador</strong> do Colégio Interativa. Aqui, alunos(as), pais/responsáveis e orientadores encontram as principais regras e informações para o desenvolvimento dos projetos acadêmicos.</p>
+      <p>Este material é apresentado aos estudantes durante as atividades de pesquisa, tanto em sala de aula quanto nas orientações, mas também solicitamos que todas as famílias façam a leitura e conversem com seus/suas filhos(as) sobre os projetos que eles desenvolvem.</p>
+      <p><em>Boa leitura e ótima pesquisa a todos(as)!</em></p>
+      <p style="color: var(--muted); font-size: 0.85rem;">Coordenação de Iniciação Científica</p>
+    </section>
+
+    <!-- História -->
+    <section id="historia">
+      <div class="section-eyebrow">Contexto institucional</div>
+      <h2>A história da Iniciação Científica</h2>
+      <p>A Iniciação Científica no Colégio Interativa existe desde o início das atividades educativas da instituição e tem como um dos pontos culminantes da sua proposta pedagógica o aprendizado por meio da investigação. No ano 2000, propusemos a formação de um Clube de Ciências que, ao se consolidar, tornou-se uma disciplina de Iniciação Científica (IC). Desde 2001, essa proposta educacional tem se solidificado e já resultou em trabalhos de grande relevância científica, reconhecidos e premiados no Brasil e em outros países.</p>
+    </section>
+
+    <!-- Seção 1 -->
+    <section id="sec1">
+      <div class="section-eyebrow">Seção 1</div>
+      <h2>Normas gerais quanto ao desenvolvimento do projeto de pesquisa</h2>
+
+      <h3>1.1 — Onde as pesquisas acontecem</h3>
+      <p>As pesquisas são desenvolvidas nas aulas de Iniciação Científica e encontros de orientação, que acontecem na grade curricular do Ensino Fundamental Anos Finais e na disciplina eletiva do Ensino Médio (1ª e 2ª série).</p>
+
+      <hr class="art-divider">
+
+      <h3>1.2 — Composição do projeto</h3>
+      <p>Todo projeto deve contar com um(a) orientador(a), ter no máximo três estudantes e ser desenvolvido seguindo estruturas de metodologia científica e/ou engenharia.</p>
+
+      <hr class="art-divider">
+
+      <h3>1.3 — Cadastro na plataforma digital</h3>
+      <p>Após definição do tema e do(a) orientador(a), o projeto é cadastrado na Plataforma Digital. Neste sistema, são registradas as principais ocorrências pedagógicas e acadêmicas do projeto.</p>
+
+      <hr class="art-divider">
+
+      <h3>1.4 — Google Drive Compartilhado</h3>
+      <p>Todo projeto possui uma pasta no Google Drive Compartilhado da Iniciação Científica, gerenciada pelos autores e pelo(a) professor(a) de Iniciação Científica específico(a) da turma. Nesta pasta, há documentos importantes os quais devem ser preenchidos e atualizados constantemente, como o relatório, monografia (9º ano), slides de apresentação, banner, entre outros.</p>
+
+      <hr class="art-divider">
+
+      <h3>1.5 — Avaliação</h3>
+      <p>Não há prova na disciplina de Iniciação Científica. Assim, as atividades avaliativas baseiam-se, em sua maior parte, por atividades como apresentações, resumos, fichamentos de artigos e elaboração de textos, como relatórios e/ou artigos. Tais atividades são avaliadas tanto pelo(a) professor(a) específico(a) da turma quanto pelos(as) orientadores(as) da pesquisa.</p>
+
+      <hr class="art-divider">
+
+      <h3>1.6 — O que todo(a) estudante precisa ter</h3>
+      <ul class="req-list">
+        <li>Um(a) orientador(a)</li>
+        <li>Um jaleco para o uso durante atividades experimentais</li>
+        <li>Um Diário de Bordo para registro das atividades</li>
+        <li>Um Plano de Pesquisa (preparado no início do desenvolvimento do projeto)</li>
+        <li>Ao término do projeto: um relatório ou monografia</li>
+      </ul>
+
+      <hr class="art-divider">
+
+      <h3>1.7 — Fases da pesquisa</h3>
+      <p>Toda pesquisa é realizada em fases, sendo elas:</p>
+      <ol class="fase-list">
+        <li>
+          <div class="fase-num">1</div>
+          <div class="fase-body"><strong>Definição de tema e orientador(a)</strong></div>
+        </li>
+        <li>
+          <div class="fase-num">2</div>
+          <div class="fase-body"><strong>Registro no Diário de Bordo e desenvolvimento do Plano de Pesquisa</strong></div>
+        </li>
+        <li>
+          <div class="fase-num">3</div>
+          <div class="fase-body">
+            <strong>Execução da pesquisa</strong>
+            <ul class="fase-sub">
+              <li>3.1 – Coleta e Análise de dados</li>
+              <li>3.2 – Resultados</li>
+              <li>3.3 – Discussão</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="fase-num">4</div>
+          <div class="fase-body"><strong>Divulgação e apresentações</strong></div>
+        </li>
+      </ol>
+
+      <hr class="art-divider">
+
+      <h3>1.8 — Um projeto por vez</h3>
+      <p>Cada estudante pode participar de apenas um projeto de cada vez. Os projetos com duração acima de 12 (doze) meses devem ser fragmentados em fases.</p>
+
+      <hr class="art-divider">
+
+      <h3>1.9 — Uso institucional das pesquisas</h3>
+      <p>Todas as pesquisas do Colégio Interativa podem ser utilizadas, a qualquer momento, para benefício da instituição em ações de marketing, propaganda, divulgação, entre outros.</p>
+
+      <hr class="art-divider">
+
+      <h3>1.10 — Parcerias com universidades</h3>
+      <p>Para projetos desenvolvidos em parcerias com universidades sem o auxílio de bolsas, é necessário o preenchimento do <em>Termo de Cooperação de Pesquisa</em>, documento que estabelece as normas específicas para tais condições. Para casos em que o aluno seja contemplado com alguma bolsa de fomento, será necessário a apresentação do plano de trabalho elaborado pelo professor responsável pela pesquisa na universidade.</p>
+
+      <hr class="art-divider">
+
+      <h3>1.11 — Propriedade intelectual</h3>
+      <div class="infobox rule">
+        <div class="infobox-icon">⚠️</div>
+        <div class="infobox-body">
+          <strong>Direitos patrimoniais</strong>
+          Nos termos do artigo 49 - I, da Lei de Direitos Autorais (Lei n° 9610/1998), os direitos patrimoniais sobre todas as pesquisas e projetos desenvolvidos na Iniciação Científica pertencerão exclusivamente ao Colégio Interativa, podendo o mesmo utilizá-los, a qualquer tempo, em seu benefício, inclusive em ações de marketing, propaganda, divulgação, entre outros, franco de qualquer pagamento ao aluno pesquisador, seus responsáveis, bem como ao orientador/coorientador. O Colégio reserva-se no direito de dar prosseguimento às pesquisas descontinuadas, abandonadas ou de alunos ou orientador/coorientador que se desvincularem do Colégio, não cabendo ao aluno pesquisador, seus responsáveis, bem como ao orientador/coorientador qualquer direito sobre a propriedade intelectual do projeto.
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 2 -->
+    <section id="sec2">
+      <div class="section-eyebrow">Seção 2</div>
+      <h2>Sobre as responsabilidades dos alunos</h2>
+
+      <h3>2.1 — Contato com o(a) orientador(a)</h3>
+      <p>Manter contato constante com o(a) orientador(a), participar dos encontros de orientação e respeitar as instruções contidas neste manual.</p>
+
+      <hr class="art-divider">
+
+      <h3>2.2 — Segurança nos espaços de pesquisa</h3>
+      <p>É necessário respeitar as regras de segurança e bom convívio nos espaços de pesquisa. Dentre as regras, destaca-se o uso de jaleco e bom manuseio de equipamentos, materiais e vidrarias, além da limpeza dos equipamentos após a utilização.</p>
+
+      <hr class="art-divider">
+
+      <h3>2.3 — Diário de Bordo</h3>
+      <p>Registrar e organizar seu próprio Diário de Bordo. O registro feito deve ser detalhado e preciso, ou seja, é necessário indicar datas e locais de todos os fatos, passos, descobertas, indagações, investigações, entrevistas, testes, resultados e respectivas análises. Como o próprio nome sugere, trata-se de um diário; assim, deve ser preenchido ao longo de todo o trabalho, trazendo as anotações, rascunhos e qualquer ideia que possa ter surgido no decorrer do desenvolvimento do projeto. O registro no Diário de Bordo pode, e será, utilizado como instrumento avaliativo para a disciplina de Iniciação Científica.</p>
+
+      <hr class="art-divider">
+
+      <h3>2.4 — Documentos de pesquisa no Google Drive</h3>
+      <p>Atualizar e revisar constantemente os documentos de pesquisa. Esses ficam disponíveis na pasta do Google Drive compartilhado específico do(a) aluno(a) (ou equipe de alunos(as)). Entre os documentos, destacam-se o Plano de Pesquisa, relatório ou monografia (para os alunos do 9º ano), slides para apresentações orais e banner para apresentações em eventos científicos. O mesmo se aplica a toda documentação necessária para participação em eventos internos e externos.</p>
+
+      <hr class="art-divider">
+
+      <h3>2.5 — Participação em feiras científicas externas</h3>
+      <p>Avisar a família sobre o interesse em participar de feiras científicas externas. Obrigatoriamente, o(a) aluno(a) deverá comunicar e ter a aprovação do(a) orientador(a). Toda etapa de participação, incluindo desde a inscrição até a apresentação, deve ter a supervisão do(a) orientador(a). A participação deverá ser comunicada diretamente à coordenação de Iniciação Científica, que reserva o direito de negar a participação na feira científica em questão seguindo critérios metodológicos, logísticos e socioemocionais.</p>
+    </section>
+
+    <!-- Seção 3 -->
+    <section id="sec3">
+      <div class="section-eyebrow">Seção 3</div>
+      <h2>Condutas de pesquisa</h2>
+
+      <h3>3.1 — Uso e higienização de materiais</h3>
+      <p>Todo o material utilizado nas pesquisas deverá ser higienizado após o uso e devolvido ao(à) professor(a)/orientador(a) responsável para que o armazene. O uso inadequado de equipamentos e vidrarias, sem supervisão do técnico do laboratório, será de inteira responsabilidade do(a) aluno(a) e seus responsáveis legais, que deverão repor os materiais em caso de dano. Além disso, é dever do(a) aluno(a) identificar experimentos, pois trabalhos não identificados serão descartados sem aviso prévio.</p>
+
+      <hr class="art-divider">
+
+      <h3>3.2 — Fraude e má conduta</h3>
+      <div class="infobox rule">
+        <div class="infobox-icon">⚠️</div>
+        <div class="infobox-body">
+          <strong>Tolerância zero</strong>
+          Fraude científica e má conduta não serão toleradas em qualquer nível da pesquisa e competição. Isso inclui plágio, falsificação, uso ou apresentação de trabalhos de outros pesquisadores como sendo próprios e/ou fabricação de dados. Portanto, copiar e colar dados, informações ou resultados de terceiros serão considerados plágio e, sem as devidas referências, o projeto poderá ser impedido de participar em eventos científicos.
+        </div>
+      </div>
+
+      <hr class="art-divider">
+
+      <h3>3.3 — Acesso aos espaços de pesquisa</h3>
+      <p>A permanência do(a) aluno(a) (ou equipe) nos espaços de pesquisa pode ser interrompida se a equipe técnica identificar indisciplina, manuseio inadequado de equipamentos/vidrarias e ausência dos materiais para a pesquisa. Para realização da pesquisa é indispensável a presença do Diário de Bordo e, no caso de pesquisas experimentais em laboratório, o uso de jaleco.</p>
+    </section>
+
+    <!-- Seção 4 -->
+    <section id="sec4">
+      <div class="section-eyebrow">Seção 4</div>
+      <h2>Sobre os orientadores</h2>
+
+      <h3>4.1 — Quem pode ser orientador(a)</h3>
+      <p>O(A) orientador(a) pode ser um(a) professor(a) do Colégio, um(a) professor(a) universitário(a) e/ou um(a) cientista qualificado(a). É exigido que o(a) orientador(a) tenha, no mínimo, 21 (vinte e um) anos. O(A) orientador(a) de projetos tem como função e responsabilidade: acompanhar o trabalho e o efetivo desempenho de seus orientandos; registrar, na plataforma digital, as principais ocorrências; avaliar a produção individual/coletiva das pesquisas e adequar o projeto às normas estabelecidas pelo Comitê de Revisão Científica (CRC).</p>
+
+      <hr class="art-divider">
+
+      <h3>4.2 — Como se tornar orientador(a)</h3>
+      <p>O Colégio Interativa tem uma equipe de orientadores que atua nas aulas de orientação; além desses, outros professores também podem ser orientadores. Para isso, é necessário que o(a) professor(a) comunique o interesse à coordenação de Iniciação Científica e organize, com seus orientandos, a forma e horário de atendimento.</p>
+
+      <hr class="art-divider">
+
+      <h3>4.3 — Área do conhecimento obrigatória</h3>
+      <p>A pesquisa a ser orientada deve, obrigatoriamente, estar incluída em uma das áreas do conhecimento listadas a seguir.</p>
+
+      <hr class="art-divider">
+
+      <h3>4.4 — Áreas do conhecimento</h3>
+      <div class="areas-grid">
+        <div class="area-tag">Ciências Agrárias</div>
+        <div class="area-tag">Ciências Biológicas</div>
+        <div class="area-tag">Ciências da Saúde</div>
+        <div class="area-tag">Ciências Exatas e da Terra</div>
+        <div class="area-tag">Engenharias</div>
+        <div class="area-tag">Ciências Humanas</div>
+        <div class="area-tag">Ciências Sociais Aplicadas</div>
+      </div>
+    </section>
+
+    <!-- Seção 5 — FITEC (CORRIGIDA: obrigatoriedade) -->
+    <section id="sec5">
+      <div class="section-eyebrow">Seção 5</div>
+      <h2>Nossa Feira de Ciências — a FITEC</h2>
+
+      <h3>5.1 — O que é a FITEC</h3>
+      <p>A Feira de Inovação, Tecnologia e Ciências (FITEC) é um evento científico realizado em Londrina (PR) pelo Instituto Trilhar, uma associação parceira do Colégio Interativa.</p>
+
+      <hr class="art-divider">
+
+      <!-- *** CORREÇÃO 1: participação obrigatória, não opcional *** -->
+      <h3>5.2 — Participação obrigatória</h3>
+      <div class="infobox rule">
+        <div class="infobox-icon">⚠️</div>
+        <div class="infobox-body">
+          <strong>Culminância obrigatória do componente de Orientação</strong>
+          A participação dos estudantes do Programa de Iniciação Científica do Colégio Interativa na FITEC é <strong>obrigatória</strong>, constituindo a culminância final do componente de Orientação de projetos, conforme estabelecido no Regimento Interno de IC (Seção 9, Art. 3º).
+        </div>
+      </div>
+      <p>Para garantir a participação, o estudante deverá comunicar seu orientador a fim de que o projeto cumpra os prazos internos definidos pela instituição em consonância com o edital externo da feira.</p>
+
+      <hr class="art-divider">
+
+      <h3>5.3 — Prazo de coleta de dados</h3>
+      <p>A FITEC ocorre no segundo semestre do ano letivo. Portanto, para garantir a participação, o estudante deverá ter concluído a maior parte das atividades de coleta e análise de dados até o fim do primeiro semestre.</p>
+    </section>
+
+    <!-- Seção 6 — Eventos externos (CORRIGIDA: itens 6.2, 6.3, 6.4, 6.5) -->
+    <section id="sec6">
+      <div class="section-eyebrow">Seção 6</div>
+      <h2>Normas quanto à participação em eventos científicos</h2>
+
+      <h3>6.1 — Condições gerais</h3>
+      <p>Além da FITEC, desde que haja o consentimento dos pais ou responsáveis, do(a) orientador(a) e da coordenação de Iniciação Científica, as pesquisas poderão ser inscritas em outros eventos. Todos os custos referentes à apresentação em feiras, incluindo a FITEC e feiras a ela afiliadas, são de responsabilidade exclusiva do(a) aluno(a) participante e de sua família. O Colégio Interativa não se responsabiliza por eventuais alterações nos valores do orçamento apresentado.</p>
+
+      <hr class="art-divider">
+
+      <!-- *** CORREÇÃO 3: incluída a comunicação formal à Coordenação após inscrição *** -->
+      <h3>6.2 — Pré-requisito e responsabilidade pela inscrição</h3>
+      <p>Para participação de eventos externos, é necessário que o projeto tenha concluído a <strong>Fase 3.1 — Coleta e Análise de dados</strong>. A inscrição, os prazos e o preenchimento dos formulários são de responsabilidade exclusiva dos autores (alunos e orientadores). Após a efetivação da inscrição, o(a) professor(a) orientador(a) deverá comunicar formalmente a participação à Coordenação de Iniciação Científica, para fins de registro institucional.</p>
+
+      <hr class="art-divider">
+
+      <!-- *** CORREÇÃO 4: incluída restrição a patrocinadores para maiores de 18 anos *** -->
+      <h3>6.3 — Captação de recursos e patrocinadores</h3>
+      <p>A obtenção de patrocinadores para custeio das despesas de participação em feiras científicas é de responsabilidade exclusiva do(a) aluno(a) interessado(a) e/ou seus responsáveis. Entretanto, o estabelecimento desse processo deve passar por uma aprovação da equipe diretiva do Colégio Interativa.</p>
+      <div class="infobox rule">
+        <div class="infobox-icon">⚠️</div>
+        <div class="infobox-body">
+          <strong>Restrição a patrocinadores</strong>
+          O Colégio Interativa reserva-se o direito de vetar a associação de seu nome e de sua imagem institucional a marcas patrocinadoras vinculadas a produtos ou serviços destinados a maiores de 18 (dezoito) anos.
+        </div>
+      </div>
+
+      <hr class="art-divider">
+
+      <!-- *** CORREÇÃO 2: professor acompanhante — processo formal, sem critério de rotatividade *** -->
+      <h3>6.4 — Professor(a) acompanhante</h3>
+      <p>O acompanhamento institucional dos estudantes em feiras científicas externas será realizado por um(a) representante designado(a) oficialmente pela Direção Pedagógica do Colégio Interativa.</p>
+      <ul class="art-list">
+        <li>O(A) professor(a) orientador(a) do projeto poderá manifestar interesse em atuar como acompanhante da delegação, devendo sinalizar formalmente essa intenção à Coordenação de Iniciação Científica.</li>
+        <li>A Coordenação de IC avaliará a solicitação e encaminhará parecer à Direção Pedagógica, a quem compete a decisão final.</li>
+        <li>Nos casos de participação em feiras científicas <strong>internacionais</strong>, será atribuída prioridade máxima para que o(a) acompanhante seja o(a) professor(a) orientador(a) do projeto.</li>
+        <li>A definição do(a) acompanhante levará em consideração critérios técnicos, pedagógicos, logísticos e financeiros, bem como a representatividade institucional do Colégio Interativa no evento.</li>
+      </ul>
+      <div class="infobox tip">
+        <div class="infobox-icon">💡</div>
+        <div class="infobox-body">
+          <strong>Feiras afiliadas via FITEC</strong>
+          Caso o projeto obtenha credenciamento para outro evento por meio de premiação em feiras afiliadas, a participação de professor(a) acompanhante estará condicionada à aprovação da Direção Pedagógica, que considerará critérios técnicos, logísticos e financeiros.
+        </div>
+      </div>
+
+      <hr class="art-divider">
+
+      <!-- *** CORREÇÃO 5: "Coordenação de IC" preciso + detalhe de seguir o acompanhante *** -->
+      <h3>6.5 — Participação de familiares</h3>
+      <p>A participação de familiares em feiras somente será permitida mediante aviso prévio e apresentação de justificativa à <strong>Coordenação de Iniciação Científica</strong>. Ressalta-se que os familiares não poderão acompanhar integralmente a programação da feira junto aos alunos, os quais deverão permanecer com o grupo de viagem e seguir, obrigatoriamente, as orientações do(a) professor(a) acompanhante.</p>
+
+      <hr class="art-divider">
+
+      <h3>6.6 — Itinerários de viagem</h3>
+      <p>As definições dos itinerários de viagem são realizadas oficialmente pelo Colégio, com vistas à saúde, à segurança e ao bem-estar dos participantes. Na organização dos itinerários, a equipe diretiva priorizará, sempre que possível, horários que não resultem em translados no período da madrugada.</p>
+
+      <hr class="art-divider">
+
+      <h3>6.7 — Comunicação com famílias após seleção</h3>
+      <p>A coordenação de Iniciação Científica é responsável por apresentar aos pais e/ou responsáveis o orçamento e as orientações gerais do evento, com o objetivo de esclarecer eventuais dúvidas relacionadas à participação. Caso não haja retorno aos contatos realizados, o projeto ficará impedido de participar da feira ou do evento científico.</p>
+
+      <hr class="art-divider">
+
+      <h3>6.8 — Credenciamento via FITEC e vínculo com o Colégio</h3>
+      <p>Os(as) alunos(as) com projetos premiados na FITEC que obtenham credenciamento para feiras afiliadas somente poderão participar caso estejam devidamente matriculados(as) no Colégio Interativa no ano de realização do evento e tenham dado continuidade e/ou avanço às pesquisas desenvolvidas.</p>
+
+      <hr class="art-divider">
+
+      <h3>6.9 — Confirmação de participações decorrentes de feiras afiliadas</h3>
+      <p>As participações em feiras decorrentes de premiações obtidas em feiras afiliadas somente serão confirmadas após discussão e aprovação conjunta entre o(a) professor(a) orientador(a), a coordenação e a direção, considerando critérios técnicos, logísticos e financeiros necessários para assegurar a adequada representação institucional no evento.</p>
+    </section>
+
+    <!-- Seção 7 — FAITEC -->
+    <section id="sec7">
+      <div class="section-eyebrow">Seção 7</div>
+      <h2>FAITEC</h2>
+
+      <h3>7.1 — O que é a FAITEC</h3>
+      <p>O Fundo de Incentivo à Tecnologia e à Ciência (FAITEC) é uma organização vinculada ao Colégio, cuja finalidade é aproximar e integrar as pesquisas desenvolvidas no Ensino Médio.</p>
+
+      <hr class="art-divider">
+
+      <h3>7.2 — Finalidade</h3>
+      <p>A FAITEC atua na arrecadação de recursos destinados ao apoio dos projetos de pesquisa, incluindo, entre outros fins, a participação em eventos científicos e a aquisição de materiais necessários ao desenvolvimento das pesquisas.</p>
+
+      <hr class="art-divider">
+
+      <h3>7.3 — Elegibilidade</h3>
+      <p>A participação na FAITEC é exclusiva para alunos regularmente matriculados no Ensino Médio e para egressos do Colégio.</p>
+
+      <hr class="art-divider">
+
+      <h3>7.4 — Regimento da FAITEC</h3>
+      <p>As normas, diretrizes e condições relativas à participação, ao funcionamento e às atribuições da FAITEC encontram-se estabelecidas em seu Regimento Interno, o qual deverá ser observado por todos os participantes.</p>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+      <div class="section-eyebrow">Dúvidas?</div>
+      <h2>Contato</h2>
+      <p>Entre em contato com a Coordenação de Iniciação Científica:</p>
+      <ul class="art-list">
+        <li><strong>E-mail:</strong> felipe.pereira@interativalondrina.com.br</li>
+        <li><strong>WhatsApp:</strong> (43) 9170-8500</li>
+      </ul>
+      <p style="margin-top: 1rem;"><em>Boa pesquisa a todos!</em></p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Manual do Jovem Pesquisador · 2026 · Colégio Interativa · <a href="regimento-ic.html">Regimento Interno de IC</a> · Portal IC Junior
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.sidebar a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-60px 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

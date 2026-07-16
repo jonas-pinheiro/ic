@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #0d2b4e;
+      --navy-mid: #1a4070;
+      --teal:     #2a9d8f;
+      --teal-lt:  #e6f7f5;
+      --amber:    #e9c46a;
+      --bg:       #f4f6f9;
+      --white:    #ffffff;
+      --text:     #1c2a3a;
+      --muted:    #5a6a7a;
+      --border:   #dce3ec;
+      --c6: #2a9d8f;
+      --c7: #e76f51;
+      --c8: #457b9d;
+      --c9: #6a4c93;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 60px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .navbar-brand img { height: 36px; width: auto; }
+    .navbar-brand span {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .navbar-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+    }
+    .navbar-links a:hover { color: var(--teal-lt); }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 3rem 2rem;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+    .hero .eyebrow .dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      margin-right: 0.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+    .hero .subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 640px;
+    }
+
+    /* ── Progression ruler ── */
+    .ruler {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .ruler-step {
+      flex: 1;
+      min-width: 130px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+    }
+    .ruler-step .n {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.55);
+    }
+    .ruler-step .label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 0.15rem;
+    }
+
+    /* ── Layout ── */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+    section { margin-bottom: 2.5rem; }
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--teal);
+      margin-bottom: 1.25rem;
+      display: inline-block;
+    }
+    .section-wrap { margin-bottom: 2.5rem; }
+
+    /* ── Card grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      border-top: 3px solid var(--teal);
+      padding: 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(13,43,78,0.08);
+      transform: translateY(-2px);
+    }
+    .card .icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+    .card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .card .go {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    /* Série cards */
+    .card-serie { border-top: none; padding: 0; overflow: hidden; }
+    .card-serie .head {
+      padding: 1rem 1.25rem 0.75rem;
+      color: #fff;
+    }
+    .card-serie[data-serie="6"] .head { background: linear-gradient(135deg, var(--c6), #1f7268); }
+    .card-serie[data-serie="7"] .head { background: linear-gradient(135deg, var(--c7), #b8502f); }
+    .card-serie[data-serie="8"] .head { background: linear-gradient(135deg, var(--c8), #2f5670); }
+    .card-serie[data-serie="9"] .head { background: linear-gradient(135deg, var(--c9), #4a3468); }
+    .card-serie .head .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 0.5rem;
+    }
+    .card-serie .head h3 { color: #fff; font-size: 1.05rem; }
+    .card-serie .body { padding: 0.9rem 1.25rem 1.1rem; }
+    .card-serie .body p { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .card-serie .go { font-size: 0.78rem; font-weight: 600; }
+    .card-serie[data-serie="6"] .go { color: var(--c6); }
+    .card-serie[data-serie="7"] .go { color: var(--c7); }
+    .card-serie[data-serie="8"] .go { color: var(--c8); }
+    .card-serie[data-serie="9"] .go { color: var(--c9); }
+
+    .status {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .status.ok { background: var(--teal-lt); color: #1a6f64; }
+    .status.pending { background: #fff8e1; color: #8a6d1a; }
+
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <img src="logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-links">
+    <a href="regimento-ic.html">Regimento</a>
+    <a href="manual-jovem-pesquisador.html">Manual do Jovem Pesquisador</a>
+    <a href="manual-orientador.html">Manual do Orientador</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span>Colégio Interativa · Londrina-PR</div>
+    <h1>Portal de Iniciação Científica Junior</h1>
+    <p class="subtitle">Documentação centralizada do programa de IC para o Ensino Fundamental Anos Finais — regimento, manuais e materiais de apoio em um único lugar, substituindo os documentos avulsos.</p>
+
+    <div class="ruler">
+      <a href="6ano.html" class="ruler-step">
+        <div class="n">6º ano</div>
+        <div class="label">Fundamentos da Pesquisa</div>
+      </a>
+      <a href="7ano.html" class="ruler-step">
+        <div class="n">7º ano</div>
+        <div class="label">Método Científico</div>
+      </a>
+      <a href="8ano.html" class="ruler-step">
+        <div class="n">8º ano</div>
+        <div class="label">Análise e Aprofundamento</div>
+      </a>
+      <a href="9ano.html" class="ruler-step">
+        <div class="n">9º ano</div>
+        <div class="label">Pesquisa Plena</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <section>
+    <h2>📘 Documentos Institucionais</h2>
+    <div class="grid">
+      <a href="regimento-ic.html" class="card">
+        <div class="icon">📋</div>
+        <h3>Regimento Interno de IC 2026 <span class="status ok">pronto</span></h3>
+        <p>Documento normativo que rege todo o programa. Todos os manuais são subordinados a ele.</p>
+        <div class="go">Acessar →</div>
+      </a>
+      <a href="manual-jovem-pesquisador.html" class="card">
+        <div class="icon">🧑‍🔬</div>
+        <h3>Manual do Jovem Pesquisador <span class="status ok">pronto</span></h3>
+        <p>Guia do aluno participante — etapas, regras e responsabilidades da pesquisa.</p>
+        <div class="go">Acessar →</div>
+      </a>
+      <a href="manual-orientador.html" class="card">
+        <div class="icon">🧑‍🏫</div>
+        <h3>Manual do Professor Orientador <span class="status ok">pronto</span></h3>
+        <p>Guia do professor orientador — papel, processo de acompanhamento e critérios.</p>
+        <div class="go">Acessar →</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>🎓 Conteúdo por Série</h2>
+    <div class="grid">
+      <div class="card card-serie" data-serie="6">
+        <a href="6ano.html" style="text-decoration:none; color:inherit;">
+          <div class="head">
+            <span class="badge">6º Ano</span>
+            <h3>Fundamentos da Pesquisa</h3>
+          </div>
+          <div class="body">
+            <p>Introdução ao método científico. <span class="status pending">em construção</span></p>
+            <div class="go">Acessar →</div>
+          </div>
+        </a>
+      </div>
+      <div class="card card-serie" data-serie="7">
+        <a href="7ano.html" style="text-decoration:none; color:inherit;">
+          <div class="head">
+            <span class="badge">7º Ano</span>
+            <h3>Método Científico</h3>
+          </div>
+          <div class="body">
+            <p>Formulação de hipóteses e experimentação. <span class="status pending">em construção</span></p>
+            <div class="go">Acessar →</div>
+          </div>
+        </a>
+      </div>
+      <div class="card card-serie" data-serie="8">
+        <a href="8ano.html" style="text-decoration:none; color:inherit;">
+          <div class="head">
+            <span class="badge">8º Ano</span>
+            <h3>Análise e Aprofundamento</h3>
+          </div>
+          <div class="body">
+            <p>Análise de dados e refinamento metodológico. <span class="status pending">em construção</span></p>
+            <div class="go">Acessar →</div>
+          </div>
+        </a>
+      </div>
+      <div class="card card-serie" data-serie="9">
+        <a href="9ano.html" style="text-decoration:none; color:inherit;">
+          <div class="head">
+            <span class="badge">9º Ano</span>
+            <h3>Pesquisa Plena</h3>
+          </div>
+          <div class="body">
+            <p>Projeto completo rumo à FITEC e à Mostra de Monografias. <span class="status pending">em construção</span></p>
+            <div class="go">Acessar →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Portal de Iniciação Científica Junior · Colégio Interativa · Londrina-PR · Uso interno
+</footer>
+
+</body>
+</html>

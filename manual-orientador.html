@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual do Professor Orientador — IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #0d2b4e;
+      --navy-mid: #1a4070;
+      --teal:     #2a9d8f;
+      --teal-lt:  #e6f7f5;
+      --amber:    #e9c46a;
+      --bg:       #f4f6f9;
+      --white:    #ffffff;
+      --text:     #1c2a3a;
+      --muted:    #5a6a7a;
+      --border:   #dce3ec;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 60px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .navbar-brand img { height: 36px; width: auto; }
+    .navbar-brand span {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .navbar-breadcrumb {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .navbar-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 2.5rem 2rem;
+    }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .page-header .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .subtitle {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+    }
+    .header-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .header-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── Layout ── */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: sticky;
+      top: 76px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .sidebar-header {
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1rem;
+    }
+    .nav-group { border-bottom: 1px solid var(--border); }
+    .nav-group:last-child { border-bottom: none; }
+    .nav-group-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding: 0.65rem 1rem 0.3rem;
+    }
+    .sidebar a {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.35rem 1rem 0.35rem 1.25rem;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+    .sidebar a:hover {
+      background: var(--teal-lt);
+      color: var(--teal);
+      border-left-color: var(--teal);
+    }
+    .sidebar a.active {
+      background: var(--teal-lt);
+      color: var(--teal);
+      border-left-color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* ── Conteúdo ── */
+    .content section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .content section:last-child { margin-bottom: 0; }
+
+    .section-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .content h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--teal);
+      margin-bottom: 1.25rem;
+    }
+    .content h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .content h3:first-of-type { margin-top: 0; }
+    .content p {
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .content p:last-child { margin-bottom: 0; }
+
+    /* listas de incisos */
+    .inc-list {
+      list-style: none;
+      margin: 0.5rem 0 0.75rem;
+      padding: 0;
+    }
+    .inc-list li {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.3rem 0 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .inc-list li:last-child { border-bottom: none; }
+    .inc-marker {
+      flex-shrink: 0;
+      font-weight: 700;
+      color: var(--teal);
+      min-width: 2rem;
+    }
+
+    /* lista simples com bullet teal */
+    .bullet-list {
+      list-style: none;
+      margin: 0.5rem 0 0.75rem;
+      padding: 0;
+    }
+    .bullet-list li {
+      padding: 0.3rem 0 0.3rem 1rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 0.25rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .bullet-list li strong { color: var(--navy); }
+
+    /* infoboxes */
+    .infobox {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .infobox.rule {
+      background: #fff8e1;
+      border: 1px solid #f0c040;
+      border-left: 3px solid #f0c040;
+    }
+    .infobox.tip {
+      background: var(--teal-lt);
+      border: 1px solid #a8dfd9;
+      border-left: 3px solid var(--teal);
+    }
+    .infobox.info {
+      background: #eef3fa;
+      border: 1px solid #b8ccee;
+      border-left: 3px solid #4a7fc1;
+    }
+    .infobox-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .infobox-body { flex: 1; }
+    .infobox-body strong {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.25rem;
+    }
+    .infobox.rule .infobox-body strong { color: #a07800; }
+    .infobox.tip .infobox-body strong  { color: var(--teal); }
+    .infobox.info .infobox-body strong { color: #2d5a9e; }
+
+    /* divisor */
+    .art-divider {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 1.25rem 0;
+    }
+
+    /* tabela de atribuições */
+    .attr-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 0.75rem 0;
+    }
+    .attr-table th {
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+    }
+    .attr-table td {
+      padding: 0.55rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text);
+    }
+    .attr-table tr:last-child td { border-bottom: none; }
+    .attr-table tr:nth-child(even) td { background: var(--bg); }
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .badge.ordinaria  { background: #e6f7f5; color: #1a7a6e; }
+    .badge.periodica  { background: #eef3fa; color: #2d5a9e; }
+    .badge.esporadica { background: #f5f5f5; color: #555; }
+
+    /* processo flowsteps */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 0.75rem 0;
+    }
+    .flow-step {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      position: relative;
+    }
+    .flow-step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 13px;
+      top: 28px;
+      bottom: -8px;
+      width: 2px;
+      background: var(--border);
+    }
+    .flow-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .flow-body {
+      flex: 1;
+      padding-bottom: 1rem;
+    }
+    .flow-body strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--navy);
+      margin-bottom: 0.15rem;
+    }
+    .flow-body span {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      font-size: 0.78rem;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: var(--teal-lt); }
+
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a class="navbar-brand" href="index.html">
+    <img src="logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb">
+    <a href="index.html">Início</a> / <span>Manual do Professor Orientador</span>
+  </div>
+</nav>
+
+<!-- Page header -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Documento oficial · Manual de Procedimentos</div>
+    <h1>Manual do Professor Orientador</h1>
+    <p class="subtitle">Diretrizes, atribuições e procedimentos para a prática de orientação em Iniciação Científica no Colégio Interativa · 2026</p>
+    <div class="header-tags">
+      <span class="header-tag">EF Anos Finais · Ensino Médio</span>
+      <span class="header-tag">Professores orientadores</span>
+      <span class="header-tag">Coordenação de IC</span>
+    </div>
+  </div>
+</header>
+
+<!-- Layout -->
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">Navegação</div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Início</div>
+      <a href="#apresentacao">Apresentação</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Organização</div>
+      <a href="#sec2">2. Organização por etapa</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Atuação</div>
+      <a href="#sec3">3. Diretrizes gerais</a>
+      <a href="#sec4">4. Atribuições</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Eventos</div>
+      <a href="#sec5">5. FITEC</a>
+      <a href="#sec6">6. Eventos externos</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Ética</div>
+      <a href="#sec7">7. Ética e pesquisas de risco</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Encerramento</div>
+      <a href="#sec8">8. Disposições finais</a>
+    </div>
+  </aside>
+
+  <!-- Conteúdo -->
+  <main class="content">
+
+    <!-- Apresentação -->
+    <section id="apresentacao">
+      <div class="section-eyebrow">MP — Manual de Procedimentos do(a) Professor(a) Orientador(a)</div>
+      <h2>1. Apresentação</h2>
+      <p>Docente,</p>
+      <p>Este Manual de Procedimentos do(a) Professor(a) Orientador(a) tem como finalidade orientar a prática de orientação em Iniciação Científica no Colégio Interativa, no ano letivo de 2026, em consonância com o Manual do Jovem Pesquisador (2026) e com a atual organização pedagógica da instituição.</p>
+      <p>O Programa de Iniciação Científica do Colégio Interativa fundamenta-se na formação de estudantes protagonistas, críticos e éticos, capazes de investigar, interpretar e intervir na realidade por meio do conhecimento científico. Nesse contexto, o(a) professor(a) orientador(a) desempenha papel central no acompanhamento dos projetos, na mediação do processo investigativo e no desenvolvimento das competências científicas e socioemocionais dos estudantes.</p>
+      <p>Este documento apresenta diretrizes, atribuições e procedimentos que devem nortear a atuação dos orientadores, assegurando coerência metodológica, alinhamento institucional e rigor científico em todas as etapas da pesquisa.</p>
+    </section>
+
+    <!-- Seção 2 -->
+    <section id="sec2">
+      <div class="section-eyebrow">Seção 2</div>
+      <h2>2. Organização da Iniciação Científica por etapa de ensino</h2>
+
+      <h3>2.1 — Disposições gerais</h3>
+      <p>A Iniciação Científica no Ensino Fundamental – Anos Finais e no Ensino Médio está estruturada de forma progressiva, respeitando as especificidades pedagógicas de cada série e o desenvolvimento investigativo dos estudantes. A organização das aulas e dos encontros de orientação distingue o ensino da prática científica da execução dos projetos autorais.</p>
+
+      <hr class="art-divider">
+
+      <h3>2.2 — 6º e 7º anos do EF Anos Finais</h3>
+      <p>As turmas do 6º e do 7º Ensino Fundamental Anos Finais contarão com um(a) único(a) professor(a) orientador(a), responsável por acompanhar integralmente os projetos autorais dos estudantes durante os encontros de orientação.</p>
+      <p>As aulas de Iniciação Científica ocorrem de forma alinhada às aulas de Ciências, cabendo aos professores dessa disciplina o desenvolvimento de habilidades por meio da investigação de questões-problema. A execução dos projetos — incluindo planejamento, desenvolvimento, registros e análise de dados — ocorre exclusivamente nos encontros de orientação.</p>
+
+      <hr class="art-divider">
+
+      <h3>2.3 — 8º ano do EF Anos Finais</h3>
+      <p>O 8º EFAF mantém a estrutura de aulas de Iniciação Científica aninhadas às aulas de Ciências, com aprofundamento dos conteúdos metodológicos e investigação de questões-problema. Cada turma contará com dois(duas) professores(as) orientadores(as), que atuarão de forma articulada, sendo responsáveis por alinhar critérios metodológicos, avaliativos e organizacionais dos projetos autorais.</p>
+
+      <hr class="art-divider">
+
+      <h3>2.4 — 9º ano do EF Anos Finais</h3>
+      <p>O 9º EFAF não possui aula regular de Iniciação Científica, havendo apenas aulas dos componentes curriculares das Ciências da Natureza: Biologia, Química e Física. O desenvolvimento dos projetos ocorre exclusivamente por meio de encontros de orientação.</p>
+      <p>Os estudantes poderão escolher entre orientadores pertencentes às áreas do conhecimento previstas no Manual do Jovem Pesquisador:</p>
+      <ul class="bullet-list">
+        <li>Ciências Agrárias</li>
+        <li>Ciências Biológicas</li>
+        <li>Ciências da Saúde</li>
+        <li>Ciências Exatas e da Terra</li>
+        <li>Engenharias</li>
+        <li>Ciências Humanas</li>
+        <li>Ciências Sociais Aplicadas</li>
+      </ul>
+      <p>A escolha da área e do(a) orientador(a) proporciona aprofundamento metodológico, autonomia investigativa e produção científica. Os encontros de orientação do 9º EFAF são também o momento dedicado à produção da monografia.</p>
+
+      <hr class="art-divider">
+
+      <h3>2.5 — Ensino Médio</h3>
+      <p>A Iniciação Científica no Ensino Médio, destinada aos estudantes da 1ª e da 2ª séries, é ofertada na forma de disciplina eletiva, cuja escolha é realizada pelos alunos no início do ano letivo. O desenvolvimento dos projetos ocorre por meio de encontros de orientação, não havendo aula regular de IC integrada à grade.</p>
+      <p>A dinâmica de funcionamento segue o mesmo modelo do 9º ano do EF Anos Finais, priorizando autonomia investigativa, aprofundamento metodológico, acompanhamento sistemático por orientadores das áreas do conhecimento previstas no Manual do Jovem Pesquisador e produção de relatórios científicos compatíveis com a etapa de ensino.</p>
+
+      <div class="infobox info">
+        <div class="infobox-icon">ℹ️</div>
+        <div class="infobox-body">
+          <strong>Caráter obrigatório no Ensino Médio</strong>
+          Uma vez incluída na grade do estudante, a disciplina eletiva de IC passa a ter caráter obrigatório, devendo o aluno cumprir os critérios de assiduidade e realização das atividades avaliativas, conforme o PPP da instituição (Regimento, Seção 4, Art. 5º, §1º).
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 3 -->
+    <section id="sec3">
+      <div class="section-eyebrow">Seção 3</div>
+      <h2>3. Diretrizes gerais para a atuação do(a) orientador(a)</h2>
+
+      <p>O(a) professor(a) orientador(a) deverá:</p>
+      <ul class="inc-list">
+        <li><span class="inc-marker">I</span> apoiar os orientandos, garantindo a viabilidade teórico-prática dos projetos;</li>
+        <li><span class="inc-marker">II</span> alinhar as atividades de pesquisa às normas e orientações do Manual do Jovem Pesquisador e do Regimento Interno de IC;</li>
+        <li><span class="inc-marker">III</span> assegurar práticas éticas e seguras, especialmente em atividades experimentais, exigindo o uso de Equipamentos de Proteção Individual (EPI) — ver Seção 7 para detalhamento das categorias de risco e papel do CRC;</li>
+        <li><span class="inc-marker">IV</span> orientar e acompanhar o registro contínuo das atividades no Diário de Bordo;</li>
+        <li><span class="inc-marker">V</span> registrar as principais ocorrências acadêmicas e pedagógicas na plataforma institucional;</li>
+        <li><span class="inc-marker">VI</span> utilizar de forma sistemática o <em>Google Drive</em> compartilhado para organização dos documentos de pesquisa;</li>
+        <li><span class="inc-marker">VII</span> auxiliar os estudantes na definição de metas mensais exequíveis e no acompanhamento do cronograma dos projetos;</li>
+        <li><span class="inc-marker">VIII</span> estimular a participação qualificada dos projetos em eventos científicos, respeitando as normas institucionais previstas no Manual do Jovem Pesquisador e no Regimento Interno de IC.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 4 -->
+    <section id="sec4">
+      <div class="section-eyebrow">Seção 4</div>
+      <h2>4. Atribuições do(a) professor(a) orientador(a)</h2>
+
+      <p>As atribuições estão organizadas em três categorias conforme periodicidade e natureza.</p>
+
+      <table class="attr-table">
+        <thead>
+          <tr>
+            <th style="width:38%">Atribuição</th>
+            <th style="width:18%">Categoria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Ordinárias -->
+          <tr>
+            <td>Orientar os estudantes na elaboração e no desenvolvimento dos projetos de pesquisa</td>
+            <td><span class="badge ordinaria">Ordinária</span></td>
+          </tr>
+          <tr>
+            <td>Assegurar boas práticas de segurança nas atividades experimentais</td>
+            <td><span class="badge ordinaria">Ordinária</span></td>
+          </tr>
+          <tr>
+            <td>Corrigir e acompanhar as produções textuais: Plano de Pesquisa, relatórios, banners e monografias</td>
+            <td><span class="badge ordinaria">Ordinária</span></td>
+          </tr>
+          <tr>
+            <td>Definir, juntamente com os estudantes, metas mensais e cronogramas de trabalho</td>
+            <td><span class="badge ordinaria">Ordinária</span></td>
+          </tr>
+          <tr>
+            <td>Registrar as atividades de pesquisa na plataforma institucional</td>
+            <td><span class="badge ordinaria">Ordinária</span></td>
+          </tr>
+          <tr>
+            <td>Acompanhar a preparação e a participação obrigatória dos projetos na FITEC, fornecendo anuência formal à inscrição junto à Coordenação de IC</td>
+            <td><span class="badge ordinaria">Ordinária</span></td>
+          </tr>
+          <tr>
+            <td>Estimular e comunicar formalmente à Coordenação de IC a participação em feiras científicas externas, após a efetivação de cada inscrição</td>
+            <td><span class="badge ordinaria">Ordinária</span></td>
+          </tr>
+          <tr>
+            <td>Participar das formações continuadas e reuniões previstas no macroplanejamento</td>
+            <td><span class="badge ordinaria">Ordinária</span></td>
+          </tr>
+          <!-- Periódicas -->
+          <tr>
+            <td>Auxiliar os estudantes nas atividades de pesquisa solicitadas</td>
+            <td><span class="badge periodica">Periódica</span></td>
+          </tr>
+          <tr>
+            <td>Comunicar à coordenação e aos professores de Ciências e IC as eventuais dificuldades na condução dos projetos</td>
+            <td><span class="badge periodica">Periódica</span></td>
+          </tr>
+          <tr>
+            <td>Participar de supervisões periódicas com a coordenação de área</td>
+            <td><span class="badge periodica">Periódica</span></td>
+          </tr>
+          <tr>
+            <td>Avaliar a produção individual e/ou coletiva das pesquisas</td>
+            <td><span class="badge periodica">Periódica</span></td>
+          </tr>
+          <!-- Esporádicas -->
+          <tr>
+            <td>Manifestar interesse formal em acompanhar alunos em viagens para feiras científicas, conforme processo descrito na Seção 6</td>
+            <td><span class="badge esporadica">Esporádica</span></td>
+          </tr>
+          <tr>
+            <td>Auxiliar no preenchimento de formulários e atuar, quando solicitado, no Comitê de Revisão Científica (CRC)</td>
+            <td><span class="badge esporadica">Esporádica</span></td>
+          </tr>
+          <tr>
+            <td>Submeter projetos que envolvam pesquisa com seres humanos, micro-organismos, produtos químicos ou qualquer outra categoria de risco à apreciação do CRC e, quando aplicável, do Comitê de Ética Escolar (CEE)</td>
+            <td><span class="badge esporadica">Esporádica</span></td>
+          </tr>
+          <tr>
+            <td>Corrigir e encaminhar relatórios de eventos externos à coordenação</td>
+            <td><span class="badge esporadica">Esporádica</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Seção 5 — FITEC -->
+    <section id="sec5">
+      <div class="section-eyebrow">Seção 5</div>
+      <h2>5. A FITEC e o papel do orientador</h2>
+
+      <h3>5.1 — Obrigatoriedade</h3>
+      <div class="infobox rule">
+        <div class="infobox-icon">⚠️</div>
+        <div class="infobox-body">
+          <strong>Participação obrigatória</strong>
+          A participação dos estudantes do Programa de IC na FITEC é <strong>obrigatória</strong>, constituindo a culminância final do componente de Orientação de projetos (Regimento, Seção 9, Art. 3º). O orientador deve planejar o desenvolvimento do projeto com esse prazo em vista desde o início do ano letivo.
+        </div>
+      </div>
+
+      <hr class="art-divider">
+
+      <h3>5.2 — Anuência formal do orientador</h3>
+      <p>Toda inscrição de projeto vinculado ao Colégio Interativa na FITEC deverá, obrigatoriamente, contar com a <strong>anuência formal do(a) professor(a) orientador(a)</strong> e da Coordenação de IC, observadas as normas institucionais e éticas da pesquisa escolar (Regimento, Seção 9, Art. 5º).</p>
+
+      <hr class="art-divider">
+
+      <h3>5.3 — Prazos internos</h3>
+      <p>Para garantir a participação dos orientandos na FITEC, os projetos deverão cumprir os prazos internos definidos pela instituição em consonância com o edital externo da feira. A maior parte das atividades de coleta e análise de dados deve estar concluída até o fim do primeiro semestre letivo.</p>
+    </section>
+
+    <!-- Seção 6 — Eventos externos -->
+    <section id="sec6">
+      <div class="section-eyebrow">Seção 6</div>
+      <h2>6. Participação em eventos científicos externos</h2>
+
+      <h3>6.1 — Restrições e condições gerais</h3>
+      <p>Além da FITEC, os projetos poderão ser inscritos em outros eventos científicos externos, desde que observadas as seguintes condições:</p>
+      <ul class="inc-list">
+        <li><span class="inc-marker">I</span>aprovação prévia do(a) professor(a) orientador(a) e da Coordenação de IC;</li>
+        <li><span class="inc-marker">II</span>o projeto deve ter concluído a <strong>Fase 3.1 — Coleta e Análise de dados</strong>;</li>
+        <li><span class="inc-marker">III</span>o evento deve estar previsto no calendário anual de participação da escola.</li>
+      </ul>
+
+      <div class="infobox rule">
+        <div class="infobox-icon">⚠️</div>
+        <div class="infobox-body">
+          <strong>Vedação a eventos fora do calendário escolar</strong>
+          Não é permitida a inscrição direta em eventos que não estejam previstos no calendário anual de participação da escola, com duas exceções: (I) eventos de caráter local, realizados no município de Londrina; (II) eventos realizados integralmente em formato online (Regimento, Seção 10, Art. 1º, §2º).
+        </div>
+      </div>
+
+      <hr class="art-divider">
+
+      <h3>6.2 — Comunicação formal após inscrição</h3>
+      <p>A inscrição, os prazos e o preenchimento dos formulários são de responsabilidade exclusiva dos autores do projeto. Após a efetivação de cada inscrição, o(a) professor(a) orientador(a) deverá <strong>comunicar formalmente</strong> a participação à Coordenação de IC, para fins de registro institucional (Regimento, Seção 10, Art. 1º, parágrafo único).</p>
+
+      <hr class="art-divider">
+
+      <!-- Seção chave: acompanhante com disponibilidade explícita -->
+      <h3>6.3 — Professor(a) acompanhante: processo e disponibilidade</h3>
+      <p>O acompanhamento institucional dos estudantes em feiras científicas externas será realizado por um(a) representante designado(a) oficialmente pela Direção Pedagógica do Colégio Interativa. A participação do(a) professor(a) orientador(a) como acompanhante <strong>não é automática nem obrigatória</strong> — depende de um processo administrativo formal e da disponibilidade do(a) próprio(a) professor(a).</p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-body">
+            <strong>Manifestação de interesse</strong>
+            <span>O(a) orientador(a) que tiver disponibilidade e interesse sinaliza formalmente essa intenção à Coordenação de IC. Não há obrigatoriedade de participação.</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-body">
+            <strong>Parecer da Coordenação de IC</strong>
+            <span>A Coordenação avalia a solicitação considerando critérios técnicos, pedagógicos, logísticos, financeiros e a representatividade institucional do Colégio no evento.</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-body">
+            <strong>Decisão da Direção Pedagógica</strong>
+            <span>A Direção Pedagógica recebe o parecer e toma a decisão final sobre quem acompanhará a delegação.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="infobox tip">
+        <div class="infobox-icon">💡</div>
+        <div class="infobox-body">
+          <strong>Feiras internacionais</strong>
+          Nos casos de participação em feiras científicas internacionais, será atribuída <strong>prioridade máxima</strong> para que o(a) acompanhante seja o(a) professor(a) orientador(a) do projeto (Regimento, Seção 10, Art. 3º, §3º).
+        </div>
+      </div>
+
+      <div class="infobox info">
+        <div class="infobox-icon">ℹ️</div>
+        <div class="infobox-body">
+          <strong>Feiras por credenciamento via FITEC</strong>
+          Caso o projeto obtenha credenciamento para outro evento por meio de premiação em feiras afiliadas, a participação de professor(a) acompanhante estará condicionada à aprovação da Direção Pedagógica, que considerará os mesmos critérios técnicos, logísticos e financeiros (Regimento, Seção 10, Art. 3º, §5º).
+        </div>
+      </div>
+
+      <hr class="art-divider">
+
+      <h3>6.4 — Captação de recursos e patrocinadores</h3>
+      <p>A captação de recursos para participação em feiras é de responsabilidade exclusiva do(a) aluno(a) e de seus responsáveis legais. O Colégio Interativa não se responsabiliza por eventuais alterações nos valores de orçamentos previamente apresentados.</p>
+      <div class="infobox rule">
+        <div class="infobox-icon">⚠️</div>
+        <div class="infobox-body">
+          <strong>Restrição a patrocinadores</strong>
+          O Colégio Interativa reserva-se o direito de vetar a associação de seu nome e de sua imagem institucional a marcas patrocinadoras vinculadas a produtos ou serviços destinados a maiores de 18 (dezoito) anos (Regimento, Seção 10, Art. 4º, §3º).
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 7 — Ética e pesquisas de risco -->
+    <section id="sec7">
+      <div class="section-eyebrow">Seção 7</div>
+      <h2>7. Ética na pesquisa, segurança e pesquisas de risco</h2>
+
+      <h3>7.1 — Princípio fundamental</h3>
+      <p>A integridade científica é o princípio fundamental do Programa de IC. Fraudes e má conduta não serão toleradas em nenhuma etapa do desenvolvimento dos projetos. O(a) orientador(a) é responsável por garantir que seus orientandos compreendam e pratiquem os princípios da ética científica.</p>
+
+      <hr class="art-divider">
+
+      <h3>7.2 — Pesquisas de risco e papel do CRC</h3>
+      <p>O(a) orientador(a) deve conhecer e aplicar os regulamentos institucionais referentes a pesquisas de risco. São consideradas pesquisas de risco aquelas que envolvam, entre outros:</p>
+      <ul class="bullet-list">
+        <li>Produtos químicos controlados ou substâncias perigosas</li>
+        <li>Equipamentos de alto risco operacional</li>
+        <li>Seres humanos como sujeitos de pesquisa</li>
+        <li>Micro-organismos ou material biológico</li>
+        <li>Qualquer procedimento que exija autorização ética ou legal externa</li>
+      </ul>
+      <p>Projetos nessas categorias devem ser submetidos ao <strong>Comitê de Revisão Científica (CRC)</strong>, que é o colegiado responsável pela avaliação, acompanhamento e validação das atividades de pesquisa no âmbito do Programa de IC (Regimento, Seção 15, Art. 1º).</p>
+
+      <hr class="art-divider">
+
+      <h3>7.3 — Comitê de Ética Escolar (CEE)</h3>
+      <p>Projetos que envolvam pesquisa com seres humanos como participantes deverão ser submetidos à apreciação do <strong>Comitê de Ética Escolar (CEE)</strong>, independentemente da área do conhecimento do projeto. A restrição anterior a apenas projetos de Ciências Humanas não reflete o escopo do Regimento — qualquer pesquisa com participantes humanos está sujeita à avaliação ética.</p>
+
+      <hr class="art-divider">
+
+      <h3>7.4 — Segurança nos espaços de pesquisa</h3>
+      <p>O(a) orientador(a) deve garantir a adoção de práticas seguras em todos os espaços de atividade, especialmente nos laboratórios. Em caso de acidente, deverá acionar imediatamente a Coordenação de IC para garantir atendimento adequado ao(à) estudante. São obrigações do orientador nos espaços de pesquisa:</p>
+      <ul class="inc-list">
+        <li><span class="inc-marker">I</span>exigir o uso de EPI — jaleco, luvas e demais equipamentos conforme a natureza da atividade;</li>
+        <li><span class="inc-marker">II</span>supervisionar o manuseio de equipamentos, vidrarias e substâncias;</li>
+        <li><span class="inc-marker">III</span>orientar a correta identificação de todos os materiais utilizados — materiais sem identificação poderão ser descartados sem aviso prévio;</li>
+        <li><span class="inc-marker">IV</span>assegurar que resíduos contaminantes ou solventes sejam descartados nos galões apropriados, nunca na pia.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 8 -->
+    <section id="sec8">
+      <div class="section-eyebrow">Seção 8</div>
+      <h2>8. Disposições finais</h2>
+      <p>O(a) professor(a) orientador(a) deverá manter-se atualizado(a) quanto às normas institucionais, ao Regimento Interno da Iniciação Científica, ao Manual do Jovem Pesquisador e às orientações da Coordenação de IC e da equipe diretiva. Os casos omissos neste Manual serão analisados pela coordenação e pela direção do Colégio Interativa.</p>
+      <p style="margin-top: 1.25rem;"><strong>Felipe Pereira</strong><br>
+      <span style="color: var(--muted); font-size: 0.85rem;">Coordenador de Iniciação Científica · Colégio Interativa</span></p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Manual do Professor Orientador · 2026 · Colégio Interativa ·
+  <a href="regimento-ic.html">Regimento Interno de IC</a> ·
+  <a href="manual-jovem-pesquisador.html">Manual do Jovem Pesquisador</a> ·
+  Portal IC Junior
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.sidebar a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-60px 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
