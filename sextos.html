@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parecer dos Projetos — 6MA e 6TA</title>
+<style>
+  :root{
+    --ink:#20261f;
+    --paper:#f6f3ea;
+    --paper-card:#fffdf7;
+    --line:#d8d2bd;
+    --accent:#8a5a2b;
+    --accent-soft:#e8dcc5;
+    --green:#3f6b3f;
+    --green-bg:#e4ecdd;
+    --amber:#93650f;
+    --amber-bg:#f3e6c9;
+    --red:#8a3324;
+    --red-bg:#f2ddd6;
+    --mono: "IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+    --serif: "Iowan Old Style","Palatino Linotype",Palatino,serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.5;
+    padding-bottom:4rem;
+  }
+  header{
+    padding:2.2rem 1.5rem 1.4rem;
+    border-bottom:3px solid var(--ink);
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(32,38,31,0.05) 28px);
+  }
+  header .kicker{
+    font-family:var(--mono);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:.72rem;
+    color:var(--accent);
+    margin-bottom:.4rem;
+  }
+  header h1{
+    margin:0 0 .3rem;
+    font-size:clamp(1.6rem,4vw,2.3rem);
+    font-weight:600;
+  }
+  header p{
+    margin:0;
+    max-width:60ch;
+    color:#4a4a3f;
+    font-size:.98rem;
+  }
+  .tabs{
+    display:flex;
+    gap:0;
+    max-width:960px;
+    margin:1.4rem auto 0;
+    padding:0 1.5rem;
+  }
+  .tab{
+    font-family:var(--mono);
+    font-size:.85rem;
+    letter-spacing:.03em;
+    padding:.65rem 1.3rem;
+    cursor:pointer;
+    border:1px solid var(--ink);
+    border-bottom:none;
+    background:var(--accent-soft);
+    color:var(--ink);
+    position:relative;
+    top:1px;
+  }
+  .tab:first-child{border-radius:6px 0 0 0;}
+  .tab:last-child{border-radius:0 6px 0 0;}
+  .tab.active{
+    background:var(--paper-card);
+    font-weight:700;
+    border-bottom:1px solid var(--paper-card);
+  }
+  main{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 1.5rem 2rem;
+    border:1px solid var(--ink);
+    border-top:none;
+    background:var(--paper-card);
+  }
+  .panel{display:none; padding-top:1.6rem;}
+  .panel.active{display:block;}
+  .summary{
+    font-family:var(--mono);
+    font-size:.83rem;
+    background:var(--accent-soft);
+    border-left:3px solid var(--accent);
+    padding:.9rem 1.1rem;
+    margin-bottom:1.6rem;
+    white-space:pre-line;
+  }
+  .card{
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:1rem;
+    overflow:hidden;
+    background:var(--paper-card);
+  }
+  .card-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    padding:.95rem 1.2rem;
+    cursor:pointer;
+    background:#faf7ef;
+  }
+  .card-head:hover{background:#f2ecdc;}
+  .card-title{
+    font-weight:700;
+    font-size:1.05rem;
+  }
+  .card-sub{
+    font-family:var(--mono);
+    font-size:.78rem;
+    color:#6b6555;
+    display:block;
+    margin-top:.15rem;
+    font-weight:400;
+  }
+  .badges{display:flex; gap:.4rem; flex-shrink:0; flex-wrap:wrap; justify-content:flex-end;}
+  .badge{
+    font-family:var(--mono);
+    font-size:.68rem;
+    padding:.25rem .55rem;
+    border-radius:99px;
+    white-space:nowrap;
+    font-weight:600;
+  }
+  .badge.green{background:var(--green-bg); color:var(--green);}
+  .badge.amber{background:var(--amber-bg); color:var(--amber);}
+  .badge.red{background:var(--red-bg); color:var(--red);}
+  .chevron{
+    font-family:var(--mono);
+    font-size:.9rem;
+    transition:transform .18s ease;
+    color:var(--accent);
+  }
+  .card.open .chevron{transform:rotate(90deg);}
+  .card-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease;
+    padding:0 1.2rem;
+  }
+  .card.open .card-body{
+    max-height:900px;
+    padding:0 1.2rem 1.2rem;
+  }
+  .card-body h4{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:.75rem;
+    color:var(--accent);
+    margin:1rem 0 .3rem;
+  }
+  .card-body h4:first-child{margin-top:.8rem;}
+  .card-body p{margin:.2rem 0 .6rem; font-size:.95rem;}
+  .actions{list-style:none; padding:0; margin:.2rem 0 0;}
+  .actions li{
+    display:flex;
+    gap:.6rem;
+    align-items:flex-start;
+    padding:.4rem 0;
+    border-top:1px dashed var(--line);
+    font-size:.95rem;
+  }
+  .actions li:first-child{border-top:none;}
+  .actions input[type=checkbox]{
+    margin-top:.3rem;
+    width:1rem;height:1rem;
+    accent-color:var(--accent);
+    flex-shrink:0;
+  }
+  .actions li.checked span{
+    text-decoration:line-through;
+    color:#8f8a78;
+  }
+  .final-box{
+    margin-top:1.8rem;
+    border:1px solid var(--ink);
+    border-radius:8px;
+    padding:1.1rem 1.3rem;
+    background:var(--accent-soft);
+  }
+  .final-box h3{margin:0 0 .5rem; font-size:1rem; font-family:var(--mono); text-transform:uppercase; letter-spacing:.05em;}
+  .final-box ol{margin:0; padding-left:1.2rem;}
+  .final-box li{margin-bottom:.4rem;}
+  .print-btn{
+    font-family:var(--mono);
+    font-size:.78rem;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    padding:.55rem 1rem;
+    border-radius:6px;
+    cursor:pointer;
+    margin-top:1.4rem;
+  }
+  .print-btn:hover{opacity:.85;}
+  @media print{
+    .tabs,.print-btn,.card-head .chevron{display:none;}
+    .panel{display:block !important;}
+    .card-body{max-height:none !important; padding:0 1.2rem 1.2rem !important;}
+    header{border-bottom:2px solid #000;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">FITEC · Feira de Ciências Interna · Colégio Interativa</div>
+  <h1>Parecer dos projetos — cobrança de banner</h1>
+  <p>Guia rápido para a conversa de hoje com cada dupla/trio do 6MA e do 6TA. Nenhum grupo preencheu o banner ainda — o foco da reunião é garantir que cada projeto saia com pelo menos um dado real coletado e analisado.</p>
+</header>
+
+<div class="tabs">
+  <div class="tab active" data-tab="6ma">6MA</div>
+  <div class="tab" data-tab="6ta">6TA</div>
+</div>
+
+<main>
+
+  <!-- 6MA -->
+  <section class="panel active" id="panel-6ma">
+    <div class="summary">status geral 6MA: nenhum banner preenchido · 1 grupo já com dado real coletado (Henrique/Felipe/Rafael) · 3 grupos com levantamento simples, sem protótipo (Giovanna/Raul/Laura · Manuela/Rafaela/Maya · Davi Miguel Miguel) · 4 grupos dependem de protótipo físico ainda sem confirmação de montagem</div>
+
+    <!-- Grupo 1 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">1. Beatriz, Isabela</div>
+          <span class="card-sub">Esponjas sintéticas vs. naturais</span>
+        </div>
+        <div class="badges">
+          <span class="badge amber">escopo grande demais</span>
+          <span class="badge red">não iniciado</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Existem dois planos na pasta. O mais antigo é simples e cru (mede "impacto" de forma vaga). O segundo é bem mais elaborado — dois eixos (degradação de 90 dias enterrando esponjas + survey de 80 pessoas em Londrina), possivelmente retrabalhado com ajuda de IA.</p>
+        <h4>Risco</h4>
+        <p>O plano elaborado é ambicioso demais pro tempo que resta: 90 dias de degradação não cabe até a feira, e 80 respostas de survey é meta alta pra configurar do zero agora.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Definir o que dá pra mostrar no banner com o tempo que resta: se não começaram a enterrar/expor as esponjas, reduzir drasticamente o eixo de degradação (2-3 medições em vez de 6) ou virar "plano futuro" no banner</span></li>
+          <li><input type="checkbox"><span>Perguntar direto: já começaram a enterrar/expor as esponjas?</span></li>
+          <li><input type="checkbox"><span>Lançar o formulário do survey essa semana — mesmo com 20-30 respostas já dá gráfico</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 2 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">2. Miguel Soller, Miguel Rocha, Davi Bortoloto</div>
+          <span class="card-sub">Assistente de IA (Lovable) para aprendizagem</span>
+        </div>
+        <div class="badges">
+          <span class="badge green">ferramenta pronta</span>
+          <span class="badge amber">falta testar</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>A ferramenta de IA já foi construída na plataforma Lovable. Método planejado: teste-reteste (aplicar prova, usar a IA por semanas, reaplicar prova, comparar % de acerto).</p>
+        <h4>Risco</h4>
+        <p>"Usar a ferramenta durante algumas semanas" não cabe mais no calendário.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Comprimir o desenho: pré-teste esta semana com 5-8 voluntários, 1 semana de uso, pós-teste</span></li>
+          <li><input type="checkbox"><span>Deixar claro que pode ser "resultado preliminar, n pequeno" no banner</span></li>
+          <li><input type="checkbox"><span>Como a ferramenta já existe, o gargalo é só executar o teste — sem isso não há dado nenhum</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 3 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">3. Davi de Arruda, Sarah, Rafih</div>
+          <span class="card-sub">Esteira automática de classificação de resíduos</span>
+        </div>
+        <div class="badges">
+          <span class="badge red">protótipo complexo</span>
+          <span class="badge amber">confirmar montagem</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Plano muito bem escrito e detalhado (sensores TCS34725 + umidade, Arduino, servos, meta de testar 30 amostras). Há também um documento à parte de brainstorm de temas, que parece ter sido a fase de escolha do tema.</p>
+        <h4>Risco</h4>
+        <p>É o projeto de protótipo mais complexo da turma (estrutura física + dois sensores + calibração). Sem evidência de que a montagem tenha começado.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Perguntar objetivamente o estágio da montagem física</span></li>
+          <li><input type="checkbox"><span>Se não começou: construir versão mínima (só 1 sensor, ex. umidade, 2 categorias) para garantir algum dado de taxa de acerto</span></li>
+          <li><input type="checkbox"><span>Se não der tempo de montar nada: banner apresenta design + protocolo como "próxima etapa" (pior cenário, evitar se possível)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 4 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">4. Giovanna, Raul, Laura</div>
+          <span class="card-sub">Variabilidade genética em sementes de feijão</span>
+        </div>
+        <div class="badges">
+          <span class="badge green">sem protótipo</span>
+          <span class="badge green">rápido de fazer</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Projeto mais "seguro" da turma em termos de prazo. Não depende de protótipo, só de sementes (baratas, fáceis de comprar) e régua. Metodologia muito bem definida (150 medições, 3 variedades, histogramas).</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Sem motivo para não ter dados prontos até o banner — cobrar início imediato da medição das 150 sementes (1-2 sessões)</span></li>
+          <li><input type="checkbox"><span>Bom grupo pra citar como referência de "projeto com dado real e análise" pros outros</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 5 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">5. Henrique, Felipe, Rafael</div>
+          <span class="card-sub">Qualidade do sono e tempo de reação</span>
+        </div>
+        <div class="badges">
+          <span class="badge green">dado já coletado</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p><strong>Único grupo com dado real já coletado</strong> — planilha "Dados.xlsx" com 18 respostas de maio/2026: horário de sono + tempo de reação.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Parabenizar o avanço</span></li>
+          <li><input type="checkbox"><span>Direcionar para cruzar variáveis (horas de sono x tempo de reação médio) e gerar o primeiro gráfico do banner</span></li>
+          <li><input type="checkbox"><span>Se der, ampliar um pouco a amostra (meta de "metade de cada turma" ainda não atingida) — mas já não é crítico</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 6 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">6. Luccas, Vitor, Theo</div>
+          <span class="card-sub">Poluição sonora / dispositivo de alerta (Arduino + LED)</span>
+        </div>
+        <div class="badges">
+          <span class="badge amber">confirmar montagem</span>
+          <span class="badge amber">estatística sem fonte própria</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>O dado central do problema (ex: "70% dos alunos incomodados", "15% dos professores com problemas auditivos") parece estatística de referência externa, não medição própria. O protótipo (Arduino + LED que acende com som alto) não tem confirmação de montagem.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Separar dois planos: protótipo pronto ou não / dado de campo</span></li>
+          <li><input type="checkbox"><span>Mesmo sem o Arduino pronto: usar um app de decibelímetro no celular pra medir volume em diferentes horários/locais da escola — dado real e rápido</span></li>
+          <li><input type="checkbox"><span>Se o LED já funciona, ótimo — mas não é pré-requisito pra terem dado no banner</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 7 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">7. Manuela, Rafaela, Maya</div>
+          <span class="card-sub">Uso excessivo de telas</span>
+        </div>
+        <div class="badges">
+          <span class="badge green">sem protótipo</span>
+          <span class="badge amber">falta lançar formulário</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Plano é só levantamento via formulário (sem protótipo). Bem mais simples de executar que os outros.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Cobrar criação e disparo do formulário Google Forms imediatamente</span></li>
+          <li><input type="checkbox"><span>Confirmar se ainda é viável aplicar em ambas as turmas citadas (6º ano e 3º EM) a tempo</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 8 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">8. Marina, Miguel, Luiz</div>
+          <span class="card-sub">Lixeira automática (Arduino + sensor ultrassônico + servo)</span>
+        </div>
+        <div class="badges">
+          <span class="badge red">objetivo vago</span>
+          <span class="badge red">sem métrica</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Plano mais fraco em amarração de dados/análise da turma — objetivo vago ("espera-se que mais pessoas fiquem interessadas"), sem métrica de avaliação do protótipo.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Antes de falar de banner: definir uma métrica testável (taxa de acerto na abertura em N tentativas, tempo de resposta do sensor, ou uso antes/depois num ponto da escola)</span></li>
+          <li><input type="checkbox"><span>Perguntar o estágio da montagem — cronograma deles sugere que ainda estão em planejamento (FITEC só aparece em outubro)</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 6TA -->
+  <section class="panel" id="panel-6ta">
+    <div class="summary">status geral 6TA: nenhum banner preenchido · 2 grupos com plano técnico sólido, só falta montar/testar (Laura/Clara/Manuella · Miguel/Matheus) · 1 grupo pronto pra coletar dado rápido sem protótipo (Antonella/Manuela) · 2 grupos precisam de reorientação conceitual antes de falar de banner (Catarina/Kauany · Eduardo/João/Gustavo)</div>
+
+    <!-- Grupo 1 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">1. Antonella, Manuela</div>
+          <span class="card-sub">Música chiclete (earworm)</span>
+        </div>
+        <div class="badges">
+          <span class="badge green">sem protótipo</span>
+          <span class="badge green">plano muito bem feito</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Um dos planos mais bem construídos da turma inteira — survey estruturado + análise comparativa de características musicais entre grupo "chiclete" e grupo controle, com 4 hipóteses claras.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Sem protótipo físico — gargalo é só aplicar o formulário. Cobrar lançamento essa semana</span></li>
+          <li><input type="checkbox"><span>Se o survey já estiver rodando, começar em paralelo a fase 2 (ouvir e classificar as músicas do ranking)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 2 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">2. Catarina, Kauany</div>
+          <span class="card-sub">Reutilização de esponjas de maquiagem em porta-joias</span>
+        </div>
+        <div class="badges">
+          <span class="badge red">sem métrica</span>
+          <span class="badge red">hipótese vaga</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Projeto mais artesanal e mais fraco em coleta de dados/análise da turma. Hipótese vaga ("podemos contribuir... mesmo não conseguindo ajudar tanto"), sem nenhuma métrica.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Este é o caso que mais precisa de reorientação: achar algo mensurável (quantidade de esponjas coletadas/semana, peso desviado do lixo, levantamento antes/depois de uma campanha de divulgação)</span></li>
+          <li><input type="checkbox"><span>Sem isso, o banner fica só descritivo ("fizemos isso"), sem parte de análise</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 3 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">3. Eduardo, João, Gustavo</div>
+          <span class="card-sub">Urso de pelúcia — comunicação para pessoas com TEA não-verbal</span>
+        </div>
+        <div class="badges">
+          <span class="badge red">hipótese genérica</span>
+          <span class="badge amber">teste inviável como está</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Proposta rica (protótipo com LED, botões, monitoramento de emoções), mas "hipótese" e "objetivo" ainda muito genéricos ("acreditamos que...", "nosso objetivo é um protótipo"), sem desenho de como isso será testado.</p>
+        <h4>Risco</h4>
+        <p>Testar de fato com uma pessoa com TEA não-verbal dificilmente é viável no prazo e levanta questões éticas/de consentimento que 3 alunos de 6º ano não vão resolver sozinhos.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Reduzir o escopo do teste: testar o protótipo (botão → luz → registro) com voluntários da própria turma simulando o uso, medindo taxa de resposta correta do dispositivo — não testar com criança com TEA de verdade</span></li>
+          <li><input type="checkbox"><span>Perguntar direto o estágio da montagem (urso, LED, botão) — risco real do banner ficar só conceitual</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 4 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">4. Laura, Clara, Manuella</div>
+          <span class="card-sub">Qualidade do ar (sensor MQ-135 + Arduino)</span>
+        </div>
+        <div class="badges">
+          <span class="badge amber">confirmar montagem</span>
+          <span class="badge green">plano sólido</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Plano tecnicamente sólido — testar o ar em diferentes locais, comparar antes/depois de intervenções (umidificador, planta). Depende de montar e calibrar o sensor.</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Perguntar se o sensor MQ-135 já foi comprado/montado (uma versão do plano já tem até preço do componente — bom indício de avanço)</span></li>
+          <li><input type="checkbox"><span>Se já funciona: rodar em 3-4 ambientes da escola e comparar leituras</span></li>
+          <li><input type="checkbox"><span>Se não: definir hoje o mínimo de locais testáveis a tempo</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grupo 5 -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">5. Miguel, Matheus</div>
+          <span class="card-sub">Bengala com sensor de obstáculos (idosos)</span>
+        </div>
+        <div class="badges">
+          <span class="badge amber">confirmar montagem</span>
+          <span class="badge green">teste simples de rodar</span>
+        </div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="card-body">
+        <h4>Situação</h4>
+        <p>Plano completo com lista de materiais (Arduino, HC-SR04, motor vibratório, buzzer) e método de teste (voluntário vendado atravessando obstáculos).</p>
+        <h4>Levar para a conversa</h4>
+        <ul class="actions">
+          <li><input type="checkbox"><span>Perguntar o estágio da montagem</span></li>
+          <li><input type="checkbox"><span>O teste proposto é rápido — não precisa de muitos voluntários, dá pra rodar 5-10 tentativas mesmo começando a montagem só agora</span></li>
+          <li><input type="checkbox"><span>Se o protótipo não sair do papel: banner com design + teste piloto simulado (só o sensor testando distâncias, sem a bengala montada), deixando claro que é resultado parcial</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="final-box">
+    <h3>Pergunta padrão para todos os grupos hoje</h3>
+    <ol>
+      <li>O protótipo (quando existe) já foi montado, parcial ou totalmente? Se não, qual a versão mínima viável até o prazo do banner?</li>
+      <li>Já coletaram algum dado, mesmo que poucos registros? Se não, o que dá pra coletar ainda essa semana sem depender do protótipo pronto (formulário, medição manual, app de celular)?</li>
+      <li>Qual vai ser o gráfico ou tabela específico que vai aparecer no banner — não sair da reunião sem isso definido.</li>
+    </ol>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">Imprimir / salvar PDF</button>
+
+</main>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+    });
+  });
+  document.querySelectorAll('.card-head').forEach(head=>{
+    head.addEventListener('click', ()=>{
+      head.parentElement.classList.toggle('open');
+    });
+  });
+  document.querySelectorAll('.actions input[type=checkbox]').forEach(cb=>{
+    cb.addEventListener('change', ()=>{
+      cb.parentElement.classList.toggle('checked', cb.checked);
+    });
+  });
+</script>
+
+</body>
+</html>
