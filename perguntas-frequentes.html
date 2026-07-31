@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perguntas Frequentes · IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d2b4e; --navy-mid: #1a4070; --teal: #2a9d8f; --teal-lt: #e6f7f5;
+      --amber: #e9c46a; --bg: #f4f6f9; --white: #ffffff; --text: #1c2a3a;
+      --muted: #5a6a7a; --border: #dce3ec;
+    }
+    body { font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.7; color: var(--text); background: var(--bg); }
+    .navbar { position: sticky; top: 0; z-index: 100; height: 60px; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .navbar-brand img { height: 36px; width: auto; }
+    .navbar-brand span { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .navbar-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .navbar-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+    .page-header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 2.5rem 2rem; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .page-header .eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.5rem; }
+    .page-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+    .content-wrap { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: start; }
+    .sidebar { position: sticky; top: 76px; }
+    .sidebar-nav { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .sidebar-nav-header { background: var(--navy); color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.65rem 1rem; }
+    .sidebar-nav a { display: block; padding: 0.6rem 1rem; font-size: 0.83rem; font-weight: 500; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .sidebar-nav a:last-child { border-bottom: none; }
+    .sidebar-nav a:hover { color: var(--teal); background: var(--teal-lt); }
+    .main-content section { margin-bottom: 2.5rem; }
+    .section-title { margin-bottom: 1.25rem; }
+    .section-title h2 { font-size: 1.1rem; font-weight: 700; color: var(--navy); padding-bottom: 0.5rem; border-bottom: 2px solid var(--teal); display: inline-block; }
+    .faq-group { display: flex; flex-direction: column; gap: 0.75rem; }
+    details { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    summary { padding: 1rem 1.25rem; font-weight: 600; font-size: 0.92rem; color: var(--navy); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    summary::after { content: '+'; font-size: 1.2rem; font-weight: 400; color: var(--teal); flex-shrink: 0; }
+    details[open] summary::after { content: '−'; }
+    summary::-webkit-details-marker { display: none; }
+    .faq-body { padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--border); }
+    .faq-body p { font-size: 0.88rem; color: var(--text); margin-top: 0.9rem; margin-bottom: 0.5rem; line-height: 1.7; }
+    .faq-body p:last-child { margin-bottom: 0; }
+    .faq-body a { color: var(--teal); font-weight: 600; text-decoration: none; }
+    .faq-body a:hover { text-decoration: underline; }
+    .faq-body .rule-tag { display: inline-block; background: #fff8e1; border: 1px solid #f0c040; color: #7a5900; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 4px; margin-right: 0.3rem; }
+    .faq-body ul { padding-left: 1.2rem; font-size: 0.88rem; margin-top: 0.5rem; }
+    .faq-body li { margin-bottom: 0.3rem; }
+    footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 2rem 1.5rem; border-top: 1px solid var(--border); }
+    @media (max-width: 768px) { .content-wrap { grid-template-columns: 1fr; } .sidebar { position: static; } }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <img src="logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb"><a href="index.html">Início</a> / <span>Perguntas Frequentes</span></div>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Colégio Interativa · IC Junior</div>
+    <h1>Perguntas Frequentes</h1>
+    <p class="subtitle">As dúvidas mais comuns de alunos e orientadores, respondidas de forma direta com links para os documentos certos.</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-header">Categorias</div>
+      <a href="#participacao">Participação</a>
+      <a href="#grupos">Grupos e orientadores</a>
+      <a href="#entregas">Entregas</a>
+      <a href="#feiras">Feiras</a>
+      <a href="#diario">Diário de Bordo</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+
+    <section id="participacao">
+      <div class="section-title"><h2>🎓 Participação no programa</h2></div>
+      <div class="faq-group">
+
+        <details>
+          <summary>Preciso participar da FITEC?</summary>
+          <div class="faq-body">
+            <p><strong>Se você está no EFAF (6º ao 9º ano): sim, é obrigatório.</strong> A FITEC é a culminância do ciclo anual e compõe 1/3 (ou 1/4 no 9º ano) da nota do 3º trimestre para todos os alunos do Ensino Fundamental Anos Finais.</p>
+            <p><strong>Se você está no Ensino Médio:</strong> a FITEC só é obrigatória para quem cursa a <strong>optativa de IC</strong>. Para os demais alunos do Médio, não é uma exigência.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>IC é obrigatória no Ensino Médio?</summary>
+          <div class="faq-body">
+            <p>No EFAF (6º ao 9º ano), IC é disciplina regular e obrigatória para todos. No Ensino Médio, IC é <strong>optativa</strong> — só participa quem escolhe cursar. Isso inclui a FITEC, a orientação e todas as entregas do programa.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Posso me inscrever em feiras externas?</summary>
+          <div class="faq-body">
+            <p>Sim — não há restrição a feiras externas. O Diário de Bordo e o Plano de Pesquisa são pré-requisitos reconhecidos por qualquer feira de ciências e devem estar em ordem antes de qualquer inscrição externa.</p>
+            <p>Consulte o <a href="regimento-ic.html">Regimento Interno</a> e seu orientador para verificar prazos e exigências específicas da feira de interesse.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="grupos">
+      <div class="section-title"><h2>👥 Grupos e orientadores</h2></div>
+      <div class="faq-group">
+
+        <details>
+          <summary>Posso fazer o projeto sozinho?</summary>
+          <div class="faq-body">
+            <p>Depende da série:</p>
+            <ul>
+              <li><strong>6º e 7º ano:</strong> <span class="rule-tag">⚠️ regra</span> não existe projeto individual. Todos trabalham em grupos de 2 a 3 alunos.</li>
+              <li><strong>8º e 9º ano / Ensino Médio:</strong> o Regimento permite de 1 a 3 autores por projeto — projeto individual é possível.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Quem é meu orientador?</summary>
+          <div class="faq-body">
+            <p>Também depende da série:</p>
+            <ul>
+              <li><strong>6º e 7º ano:</strong> o orientador é o próprio professor da disciplina de IC da sua turma, independentemente do tema.</li>
+              <li><strong>8º ano:</strong> as turmas 8MA e 8TA têm o mesmo horário de IC, reunindo 4 orientadores no mesmo espaço. Você manifesta interesse por uma área e é distribuído de forma equilibrada entre eles.</li>
+              <li><strong>9º ano e Médio:</strong> mesma lógica de manifestação de interesse e distribuição equilibrada entre os orientadores disponíveis.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Posso continuar um projeto do ano anterior?</summary>
+          <div class="faq-body">
+            <p>Sim — mas é obrigatório preencher o <strong>Formulário de Continuidade</strong>. Ele existe para demonstrar que o projeto avançou de verdade em relação ao que já foi feito, não é repetição com nova embalagem. O formulário precisa evidenciar qual foi a evolução real.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Meu grupo pode mudar de tema no meio do ano?</summary>
+          <div class="faq-body">
+            <p>Mudanças de tema após a entrega do Plano de Pesquisa devem ser discutidas com o orientador. O Diário de Bordo deve registrar o processo de decisão — inclusive mudanças de rota — o que é exatamente para o que ele serve. Consulte o <a href="manual-jovem-pesquisador.html">Manual do Jovem Pesquisador</a> e converse com seu orientador antes de qualquer mudança.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="entregas">
+      <div class="section-title"><h2>📋 Entregas e avaliação</h2></div>
+      <div class="faq-group">
+
+        <details>
+          <summary>O que é o Plano de Pesquisa e quando entrego?</summary>
+          <div class="faq-body">
+            <p>O Plano de Pesquisa é a primeira entrega formal do ciclo, no <strong>1º trimestre</strong>. Ele define a direção da pesquisa antes de começar a execução. Deve conter:</p>
+            <ul>
+              <li>Objetivos da pesquisa</li>
+              <li>Materiais e métodos</li>
+              <li>Cronograma de execução</li>
+              <li>Pelo menos 3 referências bibliográficas em ABNT</li>
+            </ul>
+            <p>Consulte o <a href="modelos/plano-de-pesquisa.html">modelo de Plano de Pesquisa</a> para o formato esperado.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>O 9º ano tem alguma diferença de avaliação?</summary>
+          <div class="faq-body">
+            <p>Sim. O 1º trimestre é igual para todas as séries. Nos 2º e 3º trimestres, o 9º ano tem dois componentes exclusivos:</p>
+            <ul>
+              <li><strong>2º trimestre:</strong> qualidade da revisão de literatura (para a monografia) — compõe 1/4 da nota</li>
+              <li><strong>3º trimestre:</strong> nota da Mostra de Monografias — compõe 1/4 da nota</li>
+            </ul>
+            <p>Veja a rubrica completa na <a href="9ano.html">página do 9º ano</a>.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="feiras">
+      <div class="section-title"><h2>🏆 Feiras e apresentações</h2></div>
+      <div class="faq-group">
+
+        <details>
+          <summary>Qual a diferença entre FITEC e Mostra de Monografias?</summary>
+          <div class="faq-body">
+            <p><strong>FITEC</strong> (Feira de Iniciação Tecnológica e Científica): apresentação pública com banner, obrigatória para todos os alunos do EFAF (6º ao 9º ano).</p>
+            <p><strong>Mostra de Monografias</strong>: apresentação formal da monografia produzida durante o ano. <strong>É exclusiva do 9º ano do EFAF</strong> — o Ensino Médio não tem monografia nem Mostra.</p>
+            <p>Para o 9º ano, as duas são obrigatórias e independentes — não é uma ou outra.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Preciso usar jaleco na feira?</summary>
+          <div class="faq-body">
+            <p>O jaleco é <strong>obrigatório apenas para quem tem prática de laboratório</strong> — é uma exigência de segurança. Para os demais, seu uso nas orientações e feiras é <strong>incentivado</strong> como cultura do programa, mas não é uma exigência formal.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="diario">
+      <div class="section-title"><h2>📓 Diário de Bordo</h2></div>
+      <div class="faq-group">
+
+        <details>
+          <summary>O que é o Diário de Bordo e quando começo?</summary>
+          <div class="faq-body">
+            <p>O Diário de Bordo é um <strong>caderno brochura físico</strong> que registra todo o processo da pesquisa — do primeiro dia de trabalho até a apresentação final. Começa no momento em que o grupo é formado e o tema definido.</p>
+            <p>Não é uma "etapa" do projeto — é contínuo. Registre reuniões, dúvidas, resultados parciais, mudanças de rota, tudo. É o que comprova que a pesquisa foi feita pelo seu grupo.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Preciso levar o Diário de Bordo para a FITEC?</summary>
+          <div class="faq-body">
+            <p><strong>Sim — é obrigatório.</strong> O Diário de Bordo precisa estar presente durante toda a apresentação na FITEC. Sem ele, a apresentação não é aceita. Essa exigência vale para qualquer feira de ciências, não só a FITEC.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>"Diário de campo" e "Diário de Bordo" são a mesma coisa?</summary>
+          <div class="faq-body">
+            <p>Sim. O termo oficial do programa é <strong>Diário de Bordo</strong>. "Diário de campo" é uma expressão equivalente que pode aparecer em conversas informais — são o mesmo documento, não há dois materiais distintos.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Portal de Iniciação Científica Junior · Colégio Interativa · Londrina-PR · Uso interno
+</footer>
+</body>
+</html>

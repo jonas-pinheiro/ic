@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regras Gerais · IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d2b4e; --navy-mid: #1a4070; --teal: #2a9d8f; --teal-lt: #e6f7f5;
+      --amber: #e9c46a; --bg: #f4f6f9; --white: #ffffff; --text: #1c2a3a;
+      --muted: #5a6a7a; --border: #dce3ec;
+    }
+    body { font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.7; color: var(--text); background: var(--bg); }
+    .navbar { position: sticky; top: 0; z-index: 100; height: 60px; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .navbar-brand img { height: 36px; width: auto; }
+    .navbar-brand span { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .navbar-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .navbar-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+    .page-header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 2.5rem 2rem; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .page-header .eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.5rem; }
+    .page-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+    .content-wrap { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: start; }
+    .sidebar { position: sticky; top: 76px; }
+    .sidebar-nav { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .sidebar-nav-header { background: var(--navy); color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.65rem 1rem; }
+    .sidebar-nav a { display: block; padding: 0.6rem 1rem; font-size: 0.83rem; font-weight: 500; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .sidebar-nav a:last-child { border-bottom: none; }
+    .sidebar-nav a:hover { color: var(--teal); background: var(--teal-lt); }
+    .main-content section { margin-bottom: 2.5rem; }
+    .section-title { margin-bottom: 1.25rem; }
+    .section-title h2 { font-size: 1.1rem; font-weight: 700; color: var(--navy); padding-bottom: 0.5rem; border-bottom: 2px solid var(--teal); display: inline-block; }
+    .rule-list { list-style: none; padding: 0; }
+    .rule-list li { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; line-height: 1.6; }
+    .rule-list li:last-child { border-bottom: none; }
+    .rule-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .rule-list li strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 0.1rem; }
+    .rule-list li span { color: var(--muted); }
+    .badge-serie { display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.1rem 0.45rem; border-radius: 4px; margin-left: 0.3rem; vertical-align: middle; }
+    .b6 { background: #e6f7f5; color: #1a6f64; }
+    .b7 { background: #fdeee9; color: #9b3d22; }
+    .b8 { background: #e8f0f7; color: #2a4f6a; }
+    .b9 { background: #f0eaf8; color: #4a2d6a; }
+    .bmedio { background: var(--bg); color: var(--muted); }
+    .note-box { background: var(--teal-lt); border: 1px solid #a8dfd9; border-radius: 8px; padding: 1rem 1.25rem; font-size: 0.85rem; color: var(--text); }
+    .note-box a { color: var(--teal); font-weight: 600; text-decoration: none; }
+    footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 2rem 1.5rem; border-top: 1px solid var(--border); }
+    @media (max-width: 768px) { .content-wrap { grid-template-columns: 1fr; } .sidebar { position: static; } }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <img src="logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb"><a href="index.html">Início</a> / <span>Regras Gerais</span></div>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Colégio Interativa · IC Junior</div>
+    <h1>Regras Gerais</h1>
+    <p class="subtitle">Consolidado rápido das principais regras do programa, extraídas do Regimento Interno. Para a norma completa, consulte o Regimento.</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-header">Categorias</div>
+      <a href="#participacao">Participação</a>
+      <a href="#grupos">Grupos</a>
+      <a href="#orientadores">Orientadores</a>
+      <a href="#entregas">Entregas obrigatórias</a>
+      <a href="#avaliacao">Avaliação</a>
+      <a href="#feiras">Feiras</a>
+      <a href="#conduta">Conduta</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="note-box" style="margin-bottom: 2rem;">
+      💡 Este é um resumo de referência rápida. Em caso de dúvida ou conflito, o documento que prevalece é o <a href="regimento-ic.html">Regimento Interno de IC 2026</a>.
+    </div>
+
+    <section id="participacao">
+      <div class="section-title"><h2>🎓 Participação</h2></div>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div><strong>IC é obrigatória no EFAF</strong><span>A disciplina de Iniciação Científica é componente curricular regular e obrigatório para todos os alunos do 6º ao 9º ano.</span></div>
+        </li>
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div><strong>IC é optativa no Ensino Médio</strong><span>No Médio, IC é disciplina optativa. Apenas os alunos que escolhem cursá-la participam do programa, da FITEC e das demais exigências.</span></div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div><strong>Dois eixos do programa</strong><span>O programa combina dois eixos indissociáveis: componente curricular de IC (aulas) + orientação de projetos (acompanhamento com o orientador).</span></div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="grupos">
+      <div class="section-title"><h2>👥 Grupos</h2></div>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div>
+            <strong>6º e 7º ano: grupos de 2 a 3 alunos obrigatórios <span class="badge-serie b6">6º</span><span class="badge-serie b7">7º</span></strong>
+            <span>Projeto individual não é permitido no 6º e no 7º ano. Todos os alunos trabalham em grupos de 2 a 3 integrantes.</span>
+          </div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div>
+            <strong>8º, 9º e Médio: de 1 a 3 autores <span class="badge-serie b8">8º</span><span class="badge-serie b9">9º</span><span class="badge-serie bmedio">Médio</span></strong>
+            <span>O Regimento permite de 1 a 3 autores por projeto — sem mínimo explícito. Projeto individual é possível.</span>
+          </div>
+        </li>
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div>
+            <strong>Projeto em continuidade exige Formulário de Continuidade</strong>
+            <span>Grupos que dão sequência a um projeto de ciclo anterior precisam preencher o Formulário de Continuidade, demonstrando avanço real — não repetição.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="orientadores">
+      <div class="section-title"><h2>🧑‍🏫 Orientadores</h2></div>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-icon">✓</span>
+          <div>
+            <strong>6º e 7º ano: orientador = professor da turma <span class="badge-serie b6">6º</span><span class="badge-serie b7">7º</span></strong>
+            <span>O orientador é o próprio professor da disciplina de IC, que acompanha todos os grupos da turma independentemente do tema e da sua área de formação.</span>
+          </div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div>
+            <strong>8º ano: distribuição entre 4 orientadores <span class="badge-serie b8">8º</span></strong>
+            <span>O 8º MA e 8º TA compartilham horário, reunindo 4 orientadores (2 por turma). O aluno manifesta interesse por área e é distribuído de forma equilibrada — não é livre escolha entre todos os professores da escola.</span>
+          </div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div>
+            <strong>9º ano e Médio: manifestação de interesse + distribuição equilibrada <span class="badge-serie b9">9º</span><span class="badge-serie bmedio">Médio</span></strong>
+            <span>Mesma lógica do 8º: o aluno indica área de interesse e é distribuído de forma equilibrada entre os orientadores disponíveis.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="entregas">
+      <div class="section-title"><h2>📋 Entregas obrigatórias</h2></div>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div><strong>Diário de Bordo — contínuo desde o 1º dia</strong><span>O Diário de Bordo (caderno brochura físico) começa no primeiro dia de trabalho do grupo e vai até a apresentação final. Não é uma "etapa" — é um documento contínuo que comprova a autoria da pesquisa.</span></div>
+        </li>
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div><strong>Plano de Pesquisa — entrega no 1º trimestre</strong><span>Deve conter: objetivos, materiais e métodos, cronograma e pelo menos 3 referências em ABNT. Compõe 1/4 da nota do 1º trimestre.</span></div>
+        </li>
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div>
+            <strong>Monografia — exclusiva do 9º EFAF <span class="badge-serie b9">9º</span></strong>
+            <span>A monografia é obrigatória apenas para o 9º ano do EFAF. O Ensino Médio produz relatório, seguindo as exigências das feiras em que o aluno for inscrito.</span>
+          </div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div><strong>Banner — para a FITEC</strong><span>Todos os projetos produzem um banner para apresentação na FITEC. Veja o modelo em <a href="modelos/apresentacao-banner.html" style="color:var(--teal);font-weight:600">Modelo de Banner</a>.</span></div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="avaliacao">
+      <div class="section-title"><h2>📊 Avaliação</h2></div>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-icon">✓</span>
+          <div><strong>1º trimestre — igual para todas as séries</strong><span>Plano de Pesquisa (1/4) + Acompanhamento (1/4) + Diário de Bordo 1ª leitura (1/4) + Diário de Bordo 2ª leitura (1/4).</span></div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div>
+            <strong>2º e 3º trimestres — 6º, 7º e 8º ano</strong>
+            <span>Diário de Bordo (1/3) + Acompanhamento (1/3) + Nota do orientador (1/3) no 2º. No 3º, substitui-se a nota do orientador por Desempenho na FITEC (1/3).</span>
+          </div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div>
+            <strong>2º e 3º trimestres — 9º ano <span class="badge-serie b9">9º</span></strong>
+            <span>Diário de Bordo (1/4) + Acompanhamento (1/4) + Nota do orientador (1/4) + Qualidade da revisão de literatura (1/4) no 2º. No 3º, substitui-se revisão por Nota da Mostra de Monografias (1/4) e nota do orientador por Desempenho na FITEC (1/4).</span>
+          </div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div><strong>Estatística: entra quando a pesquisa exige</strong><span>Análise estatística não é exclusividade de nenhum ano. É usada em qualquer série quando o desenho da pesquisa do grupo demandar.</span></div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="feiras">
+      <div class="section-title"><h2>🏆 Feiras e apresentações</h2></div>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div><strong>FITEC obrigatória para todo o EFAF</strong><span>A FITEC (Feira de Iniciação Tecnológica e Científica) é obrigatória para todos os alunos do 6º ao 9º ano. O Diário de Bordo precisa estar presente na apresentação.</span></div>
+        </li>
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div>
+            <strong>9º ano: FITEC + Mostra de Monografias — as duas obrigatórias <span class="badge-serie b9">9º</span></strong>
+            <span>Para o 9º EFAF, não é uma ou outra — as duas apresentações são obrigatórias e compõem a nota do 3º trimestre.</span>
+          </div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div>
+            <strong>Médio: FITEC só para quem faz a optativa <span class="badge-serie bmedio">Médio</span></strong>
+            <span>No Ensino Médio, a FITEC não é obrigatória para todos — só para os alunos que cursam a optativa de IC.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="conduta">
+      <div class="section-title"><h2>🧥 Conduta e identificação</h2></div>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-icon">⚠️</span>
+          <div><strong>Jaleco obrigatório na prática de laboratório</strong><span>O jaleco é exigência de segurança para quem realiza práticas em laboratório. Não é opcional nesses casos.</span></div>
+        </li>
+        <li>
+          <span class="rule-icon">✓</span>
+          <div><strong>Jaleco incentivado nas orientações</strong><span>Para alunos sem prática de laboratório, o uso do jaleco durante as orientações é incentivado como cultura e identificação do programa — mas não é uma exigência formal.</span></div>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Portal de Iniciação Científica Junior · Colégio Interativa · Londrina-PR · Uso interno
+</footer>
+</body>
+</html>

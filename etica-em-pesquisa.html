@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ética em Pesquisa · IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d2b4e; --navy-mid: #1a4070; --teal: #2a9d8f; --teal-lt: #e6f7f5;
+      --amber: #e9c46a; --bg: #f4f6f9; --white: #ffffff; --text: #1c2a3a;
+      --muted: #5a6a7a; --border: #dce3ec;
+    }
+    body { font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.7; color: var(--text); background: var(--bg); }
+    .navbar { position: sticky; top: 0; z-index: 100; height: 60px; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .navbar-brand img { height: 36px; width: auto; }
+    .navbar-brand span { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .navbar-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .navbar-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+    .page-header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 2.5rem 2rem; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .page-header .eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.5rem; }
+    .page-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+    .content-wrap { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: start; }
+    .sidebar { position: sticky; top: 76px; }
+    .sidebar-nav { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .sidebar-nav-header { background: var(--navy); color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.65rem 1rem; }
+    .sidebar-nav a { display: block; padding: 0.6rem 1rem; font-size: 0.83rem; font-weight: 500; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .sidebar-nav a:last-child { border-bottom: none; }
+    .sidebar-nav a:hover { color: var(--teal); background: var(--teal-lt); }
+    .main-content section { margin-bottom: 2.5rem; }
+    .main-content p { margin-bottom: 0.75rem; }
+    .main-content p:last-child { margin-bottom: 0; }
+    .section-title { margin-bottom: 1.25rem; }
+    .section-title h2 { font-size: 1.1rem; font-weight: 700; color: var(--navy); padding-bottom: 0.5rem; border-bottom: 2px solid var(--teal); display: inline-block; }
+    .infobox { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+    .infobox.rule { background: #fff8e1; border: 1px solid #f0c040; }
+    .infobox.tip { background: var(--teal-lt); border: 1px solid #a8dfd9; }
+    .infobox-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .infobox-body strong { font-weight: 700; font-size: 0.88rem; display: block; margin-bottom: 0.25rem; }
+    .infobox-body p { font-size: 0.85rem; margin: 0; line-height: 1.6; }
+    .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .concept-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--teal); border-radius: 10px; padding: 1.1rem 1.25rem; }
+    .concept-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+    .concept-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin: 0; }
+    .obj-list { list-style: none; padding: 0; }
+    .obj-list li { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+    .obj-list li:last-child { border-bottom: none; }
+    .obj-check { color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+    footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 2rem 1.5rem; border-top: 1px solid var(--border); }
+    @media (max-width: 768px) { .content-wrap { grid-template-columns: 1fr; } .sidebar { position: static; } }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <img src="logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb"><a href="index.html">Início</a> / <span>Ética em Pesquisa</span></div>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Colégio Interativa · IC Junior</div>
+    <h1>Ética em Pesquisa</h1>
+    <p class="subtitle">Integridade científica, uso de dados, pesquisa com participantes e boas práticas na IC escolar.</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-header">Nesta página</div>
+      <a href="#por-que-importa">Por que importa</a>
+      <a href="#autoria">Autoria e plágio</a>
+      <a href="#dados-participantes">Dados e participantes</a>
+      <a href="#seres-vivos">Seres vivos</a>
+      <a href="#ia">Uso de IA</a>
+      <a href="#boas-praticas">Boas práticas</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+
+    <section id="por-que-importa">
+      <div class="section-title"><h2>⚖️ Por que ética em pesquisa importa</h2></div>
+      <p>Ética em pesquisa não é um conjunto de regras burocráticas — é o que garante que os resultados de uma pesquisa sejam confiáveis e que o processo de investigação não cause danos a ninguém. Numa IC escolar, isso se traduz em questões práticas e concretas: você está usando dados de verdade? Quem forneceu esses dados autorizou? O que você escreveu no relatório é seu?</p>
+      <p>Respeitar a ética científica também é uma forma de respeitar quem vai ler o seu trabalho — orientadores, avaliadores de feiras, colegas — e quem vai usar os resultados depois.</p>
+    </section>
+
+    <section id="autoria">
+      <div class="section-title"><h2>✍️ Autoria e plágio</h2></div>
+      <div class="concept-grid">
+        <div class="concept-card">
+          <h3>O que é plágio</h3>
+          <p>Apresentar o trabalho de outra pessoa como se fosse seu — copiando texto, dados, imagens ou ideias sem indicar a fonte. Isso vale para textos da internet, artigos científicos, livros e trabalhos de outros grupos ou turmas.</p>
+        </div>
+        <div class="concept-card">
+          <h3>Como citar corretamente</h3>
+          <p>Sempre que usar uma ideia, dado ou trecho de outra fonte, indique a origem com referência em ABNT. Mesmo que você reescreva com suas palavras, a fonte precisa aparecer.</p>
+        </div>
+        <div class="concept-card">
+          <h3>Autoria coletiva</h3>
+          <p>Todos os integrantes do grupo são autores do projeto. Isso significa que todos precisam entender e ser capazes de explicar o que está no relatório e no banner — não só quem escreveu determinada parte.</p>
+        </div>
+        <div class="concept-card">
+          <h3>O papel do Diário de Bordo</h3>
+          <p>O Diário de Bordo é a evidência da autoria. Ele mostra, com registros datados, que a pesquisa foi conduzida de fato pelo grupo — não é uma exigência formal vazia.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="dados-participantes">
+      <div class="section-title"><h2>📋 Dados e participantes</h2></div>
+      <p>Quando a pesquisa envolve pessoas — aplicar questionário, coletar informações de saúde, comportamento ou opinião — é preciso seguir algumas regras básicas.</p>
+      <div class="infobox rule">
+        <span class="infobox-icon">⚠️</span>
+        <div class="infobox-body">
+          <strong>Participação deve ser voluntária e informada</strong>
+          <p>Ninguém pode ser obrigado a participar da pesquisa. Quem colabora precisa saber o que está sendo coletado e para quê — antes de responder qualquer coisa. Para participantes menores de idade, o consentimento dos responsáveis pode ser necessário. Consulte o orientador e o <a href="modelos/termo-autorizacao.html" style="color:var(--teal);font-weight:600">Termo de Autorização</a>.</p>
+        </div>
+      </div>
+      <ul class="obj-list" style="margin-top: 1rem;">
+        <li><span class="obj-check">✓</span><span>Dados pessoais (nome, endereço, informações de saúde) não devem ser identificados nos resultados sem consentimento explícito — use anonimização</span></li>
+        <li><span class="obj-check">✓</span><span>Os dados coletados só devem ser usados para os fins descritos na pesquisa — não para outro propósito</span></li>
+        <li><span class="obj-check">✓</span><span>Resultados negativos (a hipótese não se confirmou) são tão válidos quanto resultados positivos — não omita nem distorça dados que "não saíram como esperado"</span></li>
+        <li><span class="obj-check">✓</span><span>Dados fabricados ou manipulados invalidam a pesquisa inteira — mesmo que "poucos dados" pareça um problema, inventar dados é pior</span></li>
+      </ul>
+    </section>
+
+    <section id="seres-vivos">
+      <div class="section-title"><h2>🌱 Pesquisa com seres vivos</h2></div>
+      <div class="infobox rule">
+        <span class="infobox-icon">⚠️</span>
+        <div class="infobox-body">
+          <strong>Pesquisa com animais exige cuidado redobrado</strong>
+          <p>Pesquisas que envolvem animais precisam garantir que nenhum dano desnecessário seja causado. Na IC escolar, isso geralmente significa observação sem intervenção invasiva. Qualquer procedimento que possa causar estresse ou dano ao animal precisa ser discutido com o orientador antes de ser realizado.</p>
+        </div>
+      </div>
+      <div class="infobox tip" style="margin-top: 1rem;">
+        <span class="infobox-icon">💡</span>
+        <div class="infobox-body">
+          <strong>Plantas e micro-organismos</strong>
+          <p>Pesquisas com plantas ou micro-organismos em laboratório têm muito menos restrições éticas, mas ainda exigem cuidado com descarte adequado de materiais e respeito às normas de segurança do laboratório (inclusive uso de jaleco quando aplicável).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ia">
+      <div class="section-title"><h2>🤖 Uso de inteligência artificial</h2></div>
+      <p>Ferramentas de IA generativa (como ChatGPT, Gemini, entre outras) podem ser usadas para apoiar a pesquisa — mas não para substituir o trabalho intelectual do grupo.</p>
+      <ul class="obj-list">
+        <li><span class="obj-check">✓</span><span><strong>Permitido:</strong> usar IA para pesquisar referências, organizar ideias, revisar ortografia e gramática, formatar citações</span></li>
+        <li><span class="obj-check">✓</span><span><strong>Requer atenção:</strong> texto gerado por IA não pode ser copiado diretamente no relatório ou monografia como se fosse do grupo — a escrita final precisa ser do aluno</span></li>
+        <li><span class="obj-check">✓</span><span><strong>Verificar sempre:</strong> IA pode inventar referências bibliográficas que não existem ("alucinações") — nunca use uma referência gerada por IA sem verificar que o documento existe de verdade</span></li>
+        <li><span class="obj-check">✓</span><span><strong>Registrar no Diário de Bordo:</strong> se a IA foi usada de forma relevante no projeto (ex: construção de ferramenta), isso deve aparecer registrado no Diário de Bordo e no relatório</span></li>
+      </ul>
+    </section>
+
+    <section id="boas-praticas">
+      <div class="section-title"><h2>✅ Boas práticas em resumo</h2></div>
+      <ul class="obj-list">
+        <li><span class="obj-check">✓</span><span>Colete dados reais — não invente, não simule, não manipule</span></li>
+        <li><span class="obj-check">✓</span><span>Cite sempre as fontes que você usou, mesmo que seja só para contextualizar</span></li>
+        <li><span class="obj-check">✓</span><span>Obtenha consentimento antes de coletar dados de pessoas</span></li>
+        <li><span class="obj-check">✓</span><span>Registre tudo no Diário de Bordo — inclusive o que não deu certo</span></li>
+        <li><span class="obj-check">✓</span><span>Se a hipótese não se confirmou, diga isso com clareza — não é fracasso, é resultado</span></li>
+        <li><span class="obj-check">✓</span><span>Todos do grupo precisam entender e ser capazes de defender o que está no trabalho</span></li>
+        <li><span class="obj-check">✓</span><span>Em caso de dúvida sobre o que é ético fazer na pesquisa, consulte o orientador antes — não depois</span></li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Portal de Iniciação Científica Junior · Colégio Interativa · Londrina-PR · Uso interno
+</footer>
+</body>
+</html>

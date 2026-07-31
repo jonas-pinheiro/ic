@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diário de Bordo · IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d2b4e; --navy-mid: #1a4070; --teal: #2a9d8f; --teal-lt: #e6f7f5; --amber: #e9c46a; --bg: #f4f6f9; --white: #ffffff; --text: #1c2a3a; --muted: #5a6a7a; --border: #dce3ec; }
+    body { font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.7; color: var(--text); background: var(--bg); }
+    .navbar { position: sticky; top: 0; z-index: 100; height: 60px; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .navbar-brand img { height: 36px; width: auto; }
+    .navbar-brand span { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .navbar-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .navbar-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+    .page-header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 2.5rem 2rem; }
+    .page-header-inner { max-width: 860px; margin: 0 auto; }
+    .page-header .eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.5rem; }
+    .page-header h1 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+    .layout { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    .section-title { margin-bottom: 1.25rem; }
+    .section-title h2 { font-size: 1.1rem; font-weight: 700; color: var(--navy); padding-bottom: 0.5rem; border-bottom: 2px solid var(--teal); display: inline-block; }
+    section { margin-bottom: 2.5rem; }
+    p { margin-bottom: 0.75rem; } p:last-child { margin-bottom: 0; }
+    .coming-box { background: #fff8e1; border: 1px solid #f0c040; border-radius: 10px; padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .coming-box .icon { font-size: 1.3rem; }
+    .coming-box .title { font-weight: 700; font-size: 0.9rem; color: #7a5900; margin-bottom: 0.2rem; }
+    .coming-box .text { font-size: 0.82rem; color: #9a6700; }
+    .struct-list { list-style: none; padding: 0; }
+    .struct-list li { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+    .struct-list li:last-child { border-bottom: none; }
+    .struct-list li strong { display: block; font-weight: 700; color: var(--navy); }
+    .struct-list li span { color: var(--muted); font-size: 0.82rem; }
+    .check { color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+    .infobox { border-radius: 8px; padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; background: var(--teal-lt); border: 1px solid #a8dfd9; margin-bottom: 1rem; }
+    .infobox-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .infobox p { font-size: 0.85rem; margin: 0; line-height: 1.6; }
+    footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 2rem 1.5rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+<div class="navbar">
+  <a href="../index.html" class="navbar-brand">
+    <img src="../logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb"><a href="../index.html">Início</a> / <a href="../index.html#acesso-rapido">Modelos</a> / <span>Diário de Bordo</span></div>
+</div>
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Colégio Interativa · IC Junior · Modelos</div>
+    <h1>📓 Diário de Bordo</h1>
+    <p class="subtitle">Documento contínuo que comprova a autoria da pesquisa — começa no primeiro dia e vai até a apresentação final.</p>
+  </div>
+</div>
+<div class="layout">
+
+  <section>
+    <div class="section-title"><h2>📋 O que é</h2></div>
+    <p>O Diário de Bordo é um <strong>caderno brochura físico</strong> — não digital — que o grupo mantém durante toda a pesquisa. Não é uma "etapa" do projeto: começa no primeiro dia de trabalho e vai até a apresentação final na FITEC.</p>
+    <p>Ele é o documento que prova que a pesquisa foi conduzida de verdade pelo grupo. Por isso é exigido na FITEC e em qualquer outra feira de ciências.</p>
+    <div class="infobox">
+      <span class="infobox-icon">💡</span>
+      <p>O Diário de Bordo é físico por design: o caderno brochura com anotações à mão é mais difícil de falsificar do que um documento digital, e reforça o hábito de registro em tempo real.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><h2>⬇️ Modelo de capa e estrutura</h2></div>
+    <div class="coming-box">
+      <span class="icon">📌</span>
+      <div>
+        <div class="title">Modelo de capa em breve</div>
+        <div class="text">Um modelo de capa padronizada para o caderno brochura será disponibilizado aqui. Por enquanto, use um caderno brochura comum com capa preenchida à mão: título do projeto, nomes dos integrantes, orientador, série e ano.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><h2>📝 O que registrar</h2></div>
+    <ul class="struct-list">
+      <li><span class="check">✓</span><div><strong>Data de cada registro</strong><span>Sempre com data — o diário precisa mostrar a cronologia real da pesquisa</span></div></li>
+      <li><span class="check">✓</span><div><strong>Reuniões e orientações</strong><span>O que foi discutido com o orientador, decisões tomadas, tarefas definidas</span></div></li>
+      <li><span class="check">✓</span><div><strong>Coleta de dados</strong><span>Dados brutos coletados — medições, respostas, observações — antes de qualquer análise</span></div></li>
+      <li><span class="check">✓</span><div><strong>Resultados parciais</strong><span>O que o grupo encontrou a cada etapa, mesmo que ainda incompleto</span></div></li>
+      <li><span class="check">✓</span><div><strong>Dúvidas e problemas</strong><span>O que não funcionou, o que o grupo não entendeu, o que precisou ser revisto</span></div></li>
+      <li><span class="check">✓</span><div><strong>Mudanças de rota</strong><span>Se o grupo mudou de método, de pergunta ou de recorte, registre o motivo</span></div></li>
+      <li><span class="check">✓</span><div><strong>Fontes consultadas</strong><span>Artigos, livros, sites lidos — pode ser uma lista corrida por data</span></div></li>
+    </ul>
+  </section>
+
+</div>
+<footer>Portal de Iniciação Científica Junior · Colégio Interativa · Londrina-PR · Uso interno</footer>
+</body>
+</html>

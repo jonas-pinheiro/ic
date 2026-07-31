@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planos de Aula · IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0d2b4e; --navy-mid: #1a4070; --teal: #2a9d8f; --teal-lt: #e6f7f5; --amber: #e9c46a; --bg: #f4f6f9; --white: #ffffff; --text: #1c2a3a; --muted: #5a6a7a; --border: #dce3ec; --c7: #e76f51; }
+    body { font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.7; color: var(--text); background: var(--bg); }
+    .navbar { position: sticky; top: 0; z-index: 100; height: 60px; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .navbar-brand img { height: 36px; width: auto; }
+    .navbar-brand span { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .navbar-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .navbar-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+    .page-header { background: linear-gradient(135deg, var(--c7) 0%, #b8502f 100%); padding: 2.5rem 2rem; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .page-header .eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.5rem; }
+    .page-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+    .layout { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    .section-title { margin-bottom: 1.25rem; }
+    .section-title h2 { font-size: 1.1rem; font-weight: 700; color: var(--navy); padding-bottom: 0.5rem; border-bottom: 2px solid var(--c7); display: inline-block; }
+    section { margin-bottom: 2.5rem; }
+    p { margin-bottom: 0.75rem; }
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .plan-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--c7); border-radius: 10px; padding: 1.25rem; }
+    .plan-card .serie-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--c7); margin-bottom: 0.3rem; }
+    .plan-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .plan-card p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+    .coming-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: #fff8e1; color: #7a5900; border: 1px solid #f0c040; padding: 0.1rem 0.45rem; border-radius: 4px; margin-top: 0.75rem; }
+    footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 2rem 1.5rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+<div class="navbar">
+  <a href="../index.html" class="navbar-brand">
+    <img src="../logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb"><a href="../index.html">Início</a> / <a href="../index.html#recursos">Recursos</a> / <span>Planos de Aula</span></div>
+</div>
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Colégio Interativa · IC Junior · Recursos Pedagógicos</div>
+    <h1>🗒️ Planos de Aula por Série</h1>
+    <p class="subtitle">Sugestões de planos para introduzir e desenvolver a IC em cada série, com objetivos, atividades e avaliação.</p>
+  </div>
+</div>
+<div class="layout">
+
+  <section>
+    <div class="section-title"><h2>📚 Planos disponíveis</h2></div>
+    <p>Os planos de aula são sugestões de sequência didática para cada série — não são modelos rígidos. O orientador pode adaptar conforme o andamento da turma e o tema dos projetos.</p>
+    <div class="plan-grid" style="margin-top:1.5rem">
+      <div class="plan-card">
+        <div class="serie-label">6º ano</div>
+        <h3>O que é pesquisa? Primeiros passos</h3>
+        <p>Contextualização do programa, diferença entre senso comum e ciência, primeira formação de grupos e escolha de tema.</p>
+        <div class="coming-tag">em breve</div>
+      </div>
+      <div class="plan-card">
+        <div class="serie-label">7º ano</div>
+        <h3>Formulando hipóteses testáveis</h3>
+        <p>Do tema à pergunta de pesquisa, da pergunta à hipótese — como transformar curiosidade em investigação estruturada.</p>
+        <div class="coming-tag">em breve</div>
+      </div>
+      <div class="plan-card">
+        <div class="serie-label">8º ano</div>
+        <h3>Análise crítica de dados</h3>
+        <p>Como organizar dados em tabelas e gráficos, identificar padrões e relacionar resultados com a hipótese inicial.</p>
+        <div class="coming-tag">em breve</div>
+      </div>
+      <div class="plan-card">
+        <div class="serie-label">9º ano</div>
+        <h3>Da pesquisa à monografia</h3>
+        <p>Estrutura da monografia, qualidade da revisão de literatura e preparação para a Mostra de Monografias.</p>
+        <div class="coming-tag">em breve</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><h2>💡 Como usar estes planos</h2></div>
+    <p>Cada plano sugere objetivos de aprendizagem, sequência de atividades e critérios de avaliação compatíveis com a rubrica trimestral do programa. Use como ponto de partida — adapte ao ritmo e contexto da sua turma.</p>
+    <p>Para a rubrica trimestral completa, consulte a <a href="../regras-gerais.html" style="color:var(--teal);font-weight:600">página de Regras Gerais</a> ou a página da série correspondente.</p>
+  </section>
+
+</div>
+<footer>Portal de Iniciação Científica Junior · Colégio Interativa · Londrina-PR · Uso interno</footer>
+</body>
+</html>

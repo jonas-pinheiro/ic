@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glossário de Pesquisa · IC Junior · Colégio Interativa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d2b4e; --navy-mid: #1a4070; --teal: #2a9d8f; --teal-lt: #e6f7f5;
+      --amber: #e9c46a; --bg: #f4f6f9; --white: #ffffff; --text: #1c2a3a;
+      --muted: #5a6a7a; --border: #dce3ec;
+    }
+    body { font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.7; color: var(--text); background: var(--bg); }
+    .navbar { position: sticky; top: 0; z-index: 100; height: 60px; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .navbar-brand img { height: 36px; width: auto; }
+    .navbar-brand span { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .navbar-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .navbar-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .navbar-breadcrumb a:hover { color: var(--teal-lt); }
+    .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+    .page-header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 2.5rem 2rem; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .page-header .eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.5rem; }
+    .page-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+    .layout { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    .alpha-nav { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .alpha-nav a { font-size: 0.78rem; font-weight: 700; color: var(--teal); text-decoration: none; padding: 0.2rem 0.5rem; border-radius: 4px; background: var(--teal-lt); }
+    .alpha-nav a:hover { background: var(--teal); color: #fff; }
+    .letter-group { margin-bottom: 2.5rem; }
+    .letter-heading { font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--teal); display: inline-block; }
+    .term-list { display: flex; flex-direction: column; gap: 0; }
+    .term-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .term-item:last-child { border-bottom: none; }
+    .term { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .term-def { font-size: 0.88rem; color: var(--text); line-height: 1.65; }
+    .term-def a { color: var(--teal); font-weight: 600; text-decoration: none; }
+    footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 2rem 1.5rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <img src="logo_interativa_fundoescuro.webp" alt="Colégio Interativa">
+    <span>IC Junior</span>
+  </a>
+  <div class="navbar-breadcrumb"><a href="index.html">Início</a> / <span>Glossário</span></div>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">Colégio Interativa · IC Junior</div>
+    <h1>Glossário de Pesquisa</h1>
+    <p class="subtitle">Termos fundamentais do programa de IC explicados de forma direta — do vocabulário científico ao vocabulário interno do programa.</p>
+  </div>
+</div>
+
+<div class="layout">
+
+  <div class="alpha-nav">
+    <a href="#A">A</a><a href="#B">B</a><a href="#C">C</a><a href="#D">D</a>
+    <a href="#F">F</a><a href="#G">G</a><a href="#H">H</a><a href="#I">I</a>
+    <a href="#M">M</a><a href="#O">O</a><a href="#P">P</a><a href="#R">R</a>
+    <a href="#V">V</a>
+  </div>
+
+  <div class="letter-group" id="A">
+    <div class="letter-heading">A</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">ABNT</div>
+        <div class="term-def">Associação Brasileira de Normas Técnicas. As normas da ABNT definem como formatar referências bibliográficas, citações, sumários e outros elementos de documentos acadêmicos. O Plano de Pesquisa e a monografia do programa de IC devem seguir as normas ABNT para as referências.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Amostra</div>
+        <div class="term-def">Subconjunto de uma população maior selecionado para ser estudado. Em vez de medir todos os elementos possíveis (o que muitas vezes é inviável), a pesquisa escolhe uma amostra representativa. Exemplo: medir o tempo de reação de 18 alunos em vez de medir o de todos os estudantes da escola.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Análise estatística</div>
+        <div class="term-def">Conjunto de técnicas matemáticas para organizar, resumir e interpretar dados numéricos — calcular médias, comparar grupos, identificar tendências. No programa de IC, análise estatística entra em qualquer série quando o desenho da pesquisa do grupo exigir — não é exclusividade do 8º ou 9º ano.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Autoria</div>
+        <div class="term-def">Quem produziu a pesquisa. O Diário de Bordo é o documento que comprova a autoria: registra o processo real de trabalho do grupo, mostrando que a pesquisa foi de fato conduzida pelos alunos.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="B">
+    <div class="letter-heading">B</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Banner</div>
+        <div class="term-def">Material visual que apresenta o projeto de pesquisa na FITEC. Deve conter, em formato visual claro: pergunta de pesquisa, metodologia, resultados (com dados reais) e conclusão. Todos os grupos produzem um banner para a apresentação na feira. Veja o <a href="modelos/apresentacao-banner.html">modelo de banner</a>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="C">
+    <div class="letter-heading">C</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Coleta de dados</div>
+        <div class="term-def">Processo de obter as informações que a pesquisa precisa — por medição, experimento, questionário, observação, etc. No programa de IC, todos os anos trabalham com dados reais (não fictícios ou simulados), com nível de exigência calibrado à série.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Conclusão</div>
+        <div class="term-def">Parte final da pesquisa onde o grupo responde à pergunta de pesquisa com base nos dados coletados e analisados. Uma boa conclusão diz o que foi encontrado, compara com a hipótese inicial e indica o que ainda pode ser investigado.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Cronograma</div>
+        <div class="term-def">Planejamento das etapas da pesquisa ao longo do tempo — quem faz o quê e em qual período. O cronograma é um dos componentes obrigatórios do Plano de Pesquisa e ajuda o grupo a monitorar o próprio progresso. Veja o <a href="modelos/cronograma.html">modelo de cronograma</a>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="D">
+    <div class="letter-heading">D</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Dado real</div>
+        <div class="term-def">Informação coletada pelo próprio grupo durante a execução da pesquisa — medição, resposta de survey, observação direta, resultado de experimento. O programa de IC exige dados reais em todas as séries: a pesquisa não pode ser baseada apenas em dados de terceiros ou em experimentos fictícios.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Diário de Bordo</div>
+        <div class="term-def">Caderno brochura físico que registra todo o processo da pesquisa, do primeiro dia até a apresentação final. É um documento contínuo — não uma etapa isolada. Registra reuniões, dúvidas, resultados parciais e mudanças de rota. Comprova a autoria da pesquisa e é exigido em qualquer apresentação em feira de ciências. "Diário de campo" é uma expressão equivalente informal para o mesmo objeto.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="F">
+    <div class="letter-heading">F</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">FITEC</div>
+        <div class="term-def">Feira de Iniciação Tecnológica e Científica — a feira de ciências interna do Colégio Interativa, que é a culminância do ciclo anual. É obrigatória para todos os alunos do EFAF (6º ao 9º ano). No Ensino Médio, só é obrigatória para quem cursa a optativa de IC.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Formulário de Continuidade</div>
+        <div class="term-def">Documento obrigatório para grupos que dão sequência a um projeto do ciclo anterior. Deve demonstrar avanço real em relação ao que já foi feito — evidenciar que o projeto evoluiu, não que foi repetido com nova embalagem.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="G">
+    <div class="letter-heading">G</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Grupo de controle</div>
+        <div class="term-def">Em experimentos comparativos, é o grupo que não recebe a variável que está sendo testada — serve de referência para comparação. Exemplo: se o grupo está testando o efeito de um fertilizante em plantas, o grupo de controle são as plantas que não recebem o fertilizante.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="H">
+    <div class="letter-heading">H</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Hipótese</div>
+        <div class="term-def">Afirmação provisória que antecipa o que o grupo espera encontrar com a pesquisa. Uma boa hipótese é testável — ou seja, pode ser confirmada ou refutada com dados reais. Exemplo: "Plantas expostas a luz azul crescerão mais rápido do que plantas sob luz branca." A hipótese pode não se confirmar — e tudo bem, a pesquisa ainda é válida.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="I">
+    <div class="letter-heading">I</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">IC (Iniciação Científica)</div>
+        <div class="term-def">Prática de introdução ao processo científico. No Interativa, IC é uma disciplina regular no EFAF (6º ao 9º ano) e optativa no Ensino Médio. O aluno conduz um projeto de pesquisa completo — do problema à apresentação pública — com acompanhamento de um orientador.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="M">
+    <div class="letter-heading">M</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Metodologia</div>
+        <div class="term-def">O conjunto de decisões sobre como a pesquisa será conduzida: que tipo de dado será coletado, como será coletado, com quem, em que condições, com que instrumento de medição. A metodologia está descrita no Plano de Pesquisa e é um dos critérios de avaliação da pesquisa.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Monografia</div>
+        <div class="term-def">Documento escrito que consolida toda a pesquisa: introdução, revisão de literatura, metodologia, resultados, discussão e conclusão. É uma exigência <strong>exclusiva do 9º ano do EFAF</strong> — o Ensino Médio produz relatório, não monografia. A monografia é apresentada na Mostra de Monografias.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Mostra de Monografias</div>
+        <div class="term-def">Apresentação formal das monografias produzidas pelos alunos do 9º ano. É uma das duas apresentações públicas obrigatórias do 9º EFAF (a outra é a FITEC) e compõe 1/4 da nota do 3º trimestre. É exclusiva do 9º EFAF — não existe no Ensino Médio.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="O">
+    <div class="letter-heading">O</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Orientador</div>
+        <div class="term-def">Professor responsável pelo acompanhamento do projeto de pesquisa do grupo. A forma de atribuição varia por série: no 6º e 7º, é o professor da disciplina de IC da turma; no 8º e 9º, o aluno manifesta interesse por área e é distribuído entre os orientadores disponíveis. Ver <a href="manual-orientador.html">Manual do Professor Orientador</a>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="P">
+    <div class="letter-heading">P</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Pergunta de pesquisa</div>
+        <div class="term-def">A questão central que orienta todo o projeto. É o ponto de partida: antes de definir hipóteses ou metodologia, o grupo precisa formular uma pergunta clara e investigável. Exemplo: "O consumo de cafeína antes de dormir afeta a qualidade do sono em adolescentes?" Uma boa pergunta é específica, investigável e relevante.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Plano de Pesquisa</div>
+        <div class="term-def">Primeira entrega formal do ciclo, no 1º trimestre. Define a direção da pesquisa antes da execução. Deve conter: objetivos, materiais e métodos, cronograma e pelo menos 3 referências bibliográficas em ABNT. Compõe 1/4 da nota do 1º trimestre. Veja o <a href="modelos/plano-de-pesquisa.html">modelo</a>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="R">
+    <div class="letter-heading">R</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Referência bibliográfica</div>
+        <div class="term-def">Indicação formal das fontes consultadas na pesquisa (livros, artigos, sites), formatada conforme as normas ABNT. O Plano de Pesquisa exige no mínimo 3. A qualidade da revisão de literatura (que inclui as referências) é avaliada formalmente no 2º trimestre do 9º ano.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Relatório</div>
+        <div class="term-def">Documento que descreve a pesquisa realizada — diferente da monografia em extensão e estrutura. No programa de IC, o relatório é a entrega escrita do Ensino Médio. O EFAF produz monografia (no 9º ano) ou relatório nos demais anos, conforme as fases do ciclo.</div>
+      </div>
+      <div class="term-item">
+        <div class="term">Revisão bibliográfica / Revisão de literatura</div>
+        <div class="term-def">Levantamento e análise do que já foi publicado sobre o tema da pesquisa. Serve para entender o estado do conhecimento na área, fundamentar as hipóteses e contextualizar os resultados. No 9º ano, a qualidade da revisão de literatura é um componente formal de nota no 2º trimestre.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="letter-group" id="V">
+    <div class="letter-heading">V</div>
+    <div class="term-list">
+      <div class="term-item">
+        <div class="term">Variável</div>
+        <div class="term-def">Característica que pode assumir diferentes valores e que a pesquisa mede ou manipula. <strong>Variável independente</strong>: o que o pesquisador manipula (ex: quantidade de luz). <strong>Variável dependente</strong>: o que é medido como resposta (ex: altura da planta). Identificar as variáveis claramente é parte fundamental do desenho metodológico.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Portal de Iniciação Científica Junior · Colégio Interativa · Londrina-PR · Uso interno
+</footer>
+</body>
+</html>
