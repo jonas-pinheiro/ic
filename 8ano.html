@@ -10,11 +10,16 @@
     :root {
       --navy: #0d2b4e; --navy-mid: #1a4070; --teal: #2a9d8f; --teal-lt: #e6f7f5;
       --amber: #e9c46a; --bg: #f4f6f9; --white: #ffffff; --text: #1c2a3a;
-      --muted: #5a6a7a; --border: #dce3ec; --serie: #457b9d; --serie-mid: #2f5670;
+      --muted: #5a6a7a; --border: #dce3ec;
+      --serie: #457b9d; --serie-mid: #2f5670;
     }
+
     body { font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.7; color: var(--text); background: var(--bg); }
-    .navbar { position: sticky; top: 0; z-index: 100; height: 60px; background: var(--navy);
-      display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+
+    .navbar {
+      position: sticky; top: 0; z-index: 100; height: 60px; background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 2rem;
+    }
     .navbar-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
     .navbar-brand img { height: 36px; width: auto; }
     .navbar-brand span { font-size: 0.95rem; font-weight: 700; color: #fff; }
@@ -22,18 +27,141 @@
     .navbar-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
     .navbar-breadcrumb a:hover { color: var(--teal-lt); }
     .navbar-breadcrumb span { color: rgba(255,255,255,0.9); }
+
     .page-header { background: linear-gradient(135deg, var(--serie) 0%, var(--serie-mid) 100%); padding: 2.5rem 2rem; }
     .page-header-inner { max-width: 1100px; margin: 0 auto; }
-    .page-header .eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.5rem; }
-    .page-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 0.5rem; }
+    .page-header .eyebrow {
+      font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--amber); margin-bottom: 0.5rem;
+    }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em;
+      color: #fff; margin-bottom: 0.5rem;
+    }
     .page-header .subtitle { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
-    .layout { max-width: 700px; margin: 0 auto; padding: 3rem 1.5rem; text-align: center; }
-    .placeholder { background: #fff8e1; border: 1px solid #f0c040; border-radius: 8px; padding: 2rem 1.5rem; }
-    .placeholder .icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .placeholder h2 { font-size: 1.05rem; color: var(--navy); margin-bottom: 0.5rem; }
-    .placeholder p { font-size: 0.88rem; color: var(--muted); }
-    .back { display: inline-block; margin-top: 1.5rem; font-size: 0.85rem; font-weight: 600; color: var(--teal); text-decoration: none; }
-    footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 2rem 1.5rem; border-top: 1px solid var(--border); }
+    .header-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .header-tag {
+      font-size: 0.72rem; font-weight: 600; padding: 0.25rem 0.65rem;
+      background: rgba(255,255,255,0.18); border-radius: 4px; color: #fff;
+    }
+
+    .content-wrap {
+      max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem;
+      display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: start;
+    }
+
+    .sidebar { position: sticky; top: 76px; }
+    .sidebar-nav {
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      overflow: hidden; margin-bottom: 1rem;
+    }
+    .sidebar-nav-header {
+      background: var(--navy); color: #fff; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; padding: 0.65rem 1rem;
+    }
+    .sidebar-nav a {
+      display: block; padding: 0.6rem 1rem; font-size: 0.83rem; font-weight: 500;
+      color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border);
+    }
+    .sidebar-nav a:last-child { border-bottom: none; }
+    .sidebar-nav a:hover { color: var(--serie); background: #eaf1f6; }
+
+    .sidebar-series {
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    }
+    .sidebar-series-header {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--muted); padding: 0.65rem 1rem; border-bottom: 1px solid var(--border);
+    }
+    .sidebar-series a {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1rem; font-size: 0.82rem; color: var(--muted); text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-series a:last-child { border-bottom: none; }
+    .sidebar-series a:hover { color: var(--text); }
+    .serie-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-6 { background: #2a9d8f; }
+    .dot-7 { background: #e76f51; }
+    .dot-9 { background: #6a4c93; }
+
+    .main-content section { margin-bottom: 2.5rem; }
+    .section-title { margin-bottom: 1.25rem; }
+    .section-title h2 {
+      font-size: 1.1rem; font-weight: 700; color: var(--navy);
+      padding-bottom: 0.5rem; border-bottom: 2px solid var(--serie); display: inline-block;
+    }
+    .main-content p { margin-bottom: 0.75rem; }
+    .main-content p:last-child { margin-bottom: 0; }
+
+    .infobox {
+      border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem;
+      display: flex; gap: 0.75rem; align-items: flex-start;
+    }
+    .infobox.rule { background: #fff8e1; border: 1px solid #f0c040; }
+    .infobox.tip { background: var(--teal-lt); border: 1px solid #a8dfd9; }
+    .infobox-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .infobox-body strong { font-weight: 700; font-size: 0.88rem; display: block; margin-bottom: 0.25rem; }
+    .infobox-body p { font-size: 0.85rem; margin: 0; line-height: 1.6; }
+
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0.85rem; top: 1.75rem;
+      width: 2px; height: calc(100% - 2.5rem); background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 1.75rem; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-num {
+      position: absolute; left: -2.5rem; top: 0;
+      width: 1.75rem; height: 1.75rem; border-radius: 50%;
+      background: var(--serie); color: #fff;
+      font-size: 0.78rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tl-period {
+      font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--serie); margin-bottom: 0.2rem;
+    }
+    .tl-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+    .tl-body { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+    .tl-body ul { padding-left: 1.1rem; margin-top: 0.3rem; }
+    .tl-body li { margin-bottom: 0.25rem; }
+
+    .rubrica-block { margin-bottom: 1.5rem; }
+    .rubrica-label {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .table-wrap {
+      background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--border);
+    }
+    th {
+      background: var(--navy); color: #fff; font-weight: 700; font-size: 0.78rem;
+      padding: 0.6rem 1rem; text-align: left;
+    }
+    td { padding: 0.55rem 1rem; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--bg); }
+    .peso { font-weight: 700; color: var(--serie); white-space: nowrap; }
+
+    .obj-list { list-style: none; padding: 0; }
+    .obj-list li {
+      display: flex; gap: 0.6rem; align-items: flex-start;
+      padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;
+    }
+    .obj-list li:last-child { border-bottom: none; }
+    .obj-check { color: var(--serie); font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+
+    footer {
+      text-align: center; font-size: 0.78rem; color: var(--muted);
+      padding: 2rem 1.5rem; border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .content-wrap { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
   </style>
 </head>
 <body>
@@ -48,19 +176,217 @@
 
 <div class="page-header">
   <div class="page-header-inner">
-    <div class="eyebrow">Colégio Interativa · IC Junior</div>
+    <div class="eyebrow">Colégio Interativa · IC Junior · Ensino Fundamental</div>
     <h1>8º Ano — Análise e Aprofundamento</h1>
-    <p class="subtitle">Conteúdo desta série ainda não populado.</p>
+    <p class="subtitle">Projetos conduzidos com mais autonomia, revisão bibliográfica mais formal e exigência de entrega em nível superior.</p>
+    <div class="header-tags">
+      <span class="header-tag">Até 3 alunos por grupo</span>
+      <span class="header-tag">4 orientadores disponíveis</span>
+      <span class="header-tag">FITEC obrigatória</span>
+    </div>
   </div>
 </div>
 
-<div class="layout">
-  <div class="placeholder">
-    <div class="icon">⚠️</div>
-    <h2>Página em construção</h2>
-    <p>O conteúdo do 8º Ano (motivação, cronograma, regras específicas, planos de aula e modelos) ainda será preenchido após a validação da estrutura do portal pela coordenação de IC.</p>
-  </div>
-  <a href="index.html" class="back">← Voltar para o início</a>
+<div class="content-wrap">
+
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-header">Nesta página</div>
+      <a href="#visao-geral">Visão geral</a>
+      <a href="#grupos-orientador">Grupos e orientador</a>
+      <a href="#linha-do-tempo">Linha do tempo</a>
+      <a href="#avaliacao">Avaliação</a>
+      <a href="#diario-bordo">Diário de Bordo</a>
+      <a href="#fitec">FITEC</a>
+    </nav>
+    <div class="sidebar-series">
+      <div class="sidebar-series-header">Outras séries</div>
+      <a href="6ano.html"><span class="serie-dot dot-6"></span>6º Ano — Fundamentos da Pesquisa</a>
+      <a href="7ano.html"><span class="serie-dot dot-7"></span>7º Ano — Método Científico</a>
+      <a href="9ano.html"><span class="serie-dot dot-9"></span>9º Ano — Pesquisa Plena</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <section id="visao-geral">
+      <div class="section-title"><h2>🔍 Visão geral do 8º ano</h2></div>
+      <p>O 8º ano marca a transição para a <strong>autonomia</strong>. O aluno já domina o ciclo básico de pesquisa — aqui, a exigência sobe: os projetos são desenvolvidos com mais independência, a revisão bibliográfica é mais formal e a qualidade das entregas é avaliada com critério superior ao dos anos anteriores.</p>
+      <p>Outro elemento novo: o aluno passa a ter acesso a <strong>4 orientadores</strong> (em vez de um único), o que permite um alinhamento mais próximo entre o tema do projeto e a área de formação do orientador responsável.</p>
+      <div class="infobox tip">
+        <span class="infobox-icon">💡</span>
+        <div class="infobox-body">
+          <strong>Estatística entra quando a pesquisa exige</strong>
+          <p>No 8º ano (e em qualquer série), análise estatística é usada sempre que o desenho da pesquisa do grupo demandar — não é um requisito fixo do ano, nem exclusividade do 8º ou 9º. O que muda é que o nível de leitura crítica dos dados é maior.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="grupos-orientador">
+      <div class="section-title"><h2>👥 Grupos e orientador</h2></div>
+
+      <p>A partir do 8º ano, a regra de grupos segue o <strong>Regimento Interno</strong>: até 3 autores por projeto, sem mínimo explícito — ou seja, projetos individuais são possíveis.</p>
+
+      <div class="infobox rule">
+        <span class="infobox-icon">⚠️</span>
+        <div class="infobox-body">
+          <strong>Como funciona a distribuição entre os 4 orientadores</strong>
+          <p>O 8º MA e o 8º TA compartilham o mesmo horário de aula de IC, o que permite juntar as duas turmas. Isso reúne os 4 orientadores (2 de cada turma) no mesmo espaço e momento. O aluno manifesta interesse por uma área, e a distribuição é feita de forma <strong>equilibrada entre os 4</strong> — para não sobrecarregar um orientador e deixar outro ocioso. Não é livre escolha entre todos os professores da escola.</p>
+        </div>
+      </div>
+
+      <div class="infobox tip">
+        <span class="infobox-icon">💡</span>
+        <div class="infobox-body">
+          <strong>Projetos em continuidade</strong>
+          <p>Grupos que dão sequência a um projeto do ciclo anterior precisam preencher o <strong>Formulário de Continuidade</strong>, demonstrando avanço real — não é repetir o mesmo projeto com nova embalagem.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="linha-do-tempo">
+      <div class="section-title"><h2>📅 Linha do tempo do ciclo</h2></div>
+      <p>A estrutura de 4 fases é a mesma em todas as séries. No 8º ano, o peso cai sobre a autonomia na execução e na qualidade da análise.</p>
+      <br>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-num">1</div>
+          <div class="tl-period">Início do ano · 1º trimestre</div>
+          <div class="tl-title">Abertura e enquadramento</div>
+          <div class="tl-body">
+            <p>O programa é retomado sem partir do zero — o aluno já conhece o ciclo. A diferença em relação aos anos anteriores é que o enquadramento aqui foca nas novas regras de orientação (distribuição entre 4 orientadores) e no aumento da exigência de entrega.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-num">2</div>
+          <div class="tl-period">1º trimestre</div>
+          <div class="tl-title">Concepção da pesquisa</div>
+          <div class="tl-body">
+            <ul>
+              <li>Formação dos grupos (até 3 alunos — individual possível)</li>
+              <li>Manifestação de interesse por área → distribuição entre os 4 orientadores</li>
+              <li>Definição da pergunta de pesquisa e hipóteses</li>
+              <li>Início do <strong>Diário de Bordo</strong> — começa aqui e vai até a FITEC</li>
+              <li>Entrega do <strong>Plano de Pesquisa</strong>: objetivos, materiais e métodos, cronograma e 3 referências em ABNT</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-num">3</div>
+          <div class="tl-period">2º e 3º trimestre</div>
+          <div class="tl-title">Execução da pesquisa</div>
+          <div class="tl-body">
+            <ul>
+              <li>Revisão bibliográfica mais formal (estrutura e rigor superiores ao 7º ano)</li>
+              <li>Coleta e análise de dados reais — estatística quando a pesquisa exigir</li>
+              <li>Escrita do relatório com maior profundidade de análise</li>
+              <li>Produção do <strong>banner</strong> para a FITEC</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-num">4</div>
+          <div class="tl-period">Final do ano · 3º trimestre</div>
+          <div class="tl-title">Apresentação na FITEC</div>
+          <div class="tl-body">
+            <p>Apresentação pública do projeto na FITEC, obrigatória para todos os alunos do EFAF. O Diário de Bordo precisa estar presente e será exigido durante a apresentação.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="avaliacao">
+      <div class="section-title"><h2>📊 O que é avaliado</h2></div>
+      <p>A rubrica é a mesma para o 6º, 7º e 8º ano. O 9º tem uma variante própria por causa da monografia.</p>
+      <br>
+
+      <div class="rubrica-block">
+        <div class="rubrica-label">1º Trimestre</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Componente</th><th>Peso</th></tr></thead>
+            <tbody>
+              <tr><td>Plano de Pesquisa</td><td class="peso">1/4</td></tr>
+              <tr><td>Acompanhamento (nota de orientação consolidada)</td><td class="peso">1/4</td></tr>
+              <tr><td>Diário de Bordo — 1ª leitura</td><td class="peso">1/4</td></tr>
+              <tr><td>Diário de Bordo — 2ª leitura</td><td class="peso">1/4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="rubrica-block">
+        <div class="rubrica-label">2º Trimestre</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Componente</th><th>Peso</th></tr></thead>
+            <tbody>
+              <tr><td>Diário de Bordo</td><td class="peso">1/3</td></tr>
+              <tr><td>Acompanhamento</td><td class="peso">1/3</td></tr>
+              <tr><td>Nota definida pelo orientador</td><td class="peso">1/3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="rubrica-block">
+        <div class="rubrica-label">3º Trimestre</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Componente</th><th>Peso</th></tr></thead>
+            <tbody>
+              <tr><td>Diário de Bordo</td><td class="peso">1/3</td></tr>
+              <tr><td>Acompanhamento</td><td class="peso">1/3</td></tr>
+              <tr><td>Desempenho na FITEC</td><td class="peso">1/3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="diario-bordo">
+      <div class="section-title"><h2>📓 Diário de Bordo e Plano de Pesquisa</h2></div>
+      <div class="infobox rule">
+        <span class="infobox-icon">⚠️</span>
+        <div class="infobox-body">
+          <strong>O Diário de Bordo não é uma etapa — é contínuo</strong>
+          <p>Começa no primeiro dia de trabalho do grupo e acompanha toda a pesquisa até a FITEC. É o documento que comprova que a pesquisa foi feita pelo aluno — e é exigido em qualquer apresentação em feira de ciências.</p>
+        </div>
+      </div>
+      <ul class="obj-list" style="margin-top: 1.25rem;">
+        <li><span class="obj-check">✓</span><span>É um caderno brochura físico, mantido pelo grupo desde a concepção até a apresentação final</span></li>
+        <li><span class="obj-check">✓</span><span>Registra o processo inteiro: reuniões, dúvidas, resultados parciais, mudanças de rota — não só o resultado final</span></li>
+        <li><span class="obj-check">✓</span><span>É avaliado em duas leituras no 1º trimestre e compõe 1/3 da nota nos 2º e 3º trimestres</span></li>
+        <li><span class="obj-check">✓</span><span>O Plano de Pesquisa é entregue no 1º trimestre: objetivos, materiais e métodos, cronograma e pelo menos 3 referências em ABNT</span></li>
+        <li><span class="obj-check">✓</span><span>Projetos em continuidade exigem o Formulário de Continuidade, que demonstra avanço real em relação ao ciclo anterior</span></li>
+      </ul>
+    </section>
+
+    <section id="fitec">
+      <div class="section-title"><h2>🏆 FITEC — Feira de Iniciação Científica</h2></div>
+      <p>A FITEC (Feira de Iniciação Tecnológica e Científica) é a culminância do ciclo anual. <strong>É obrigatória para todos os alunos do EFAF</strong>, incluindo o 8º ano — sem exceção.</p>
+      <div class="infobox rule" style="margin-top: 1.25rem;">
+        <span class="infobox-icon">⚠️</span>
+        <div class="infobox-body">
+          <strong>Diário de Bordo obrigatório na apresentação</strong>
+          <p>Além do banner, o grupo precisa ter o Diário de Bordo em mãos durante a FITEC. Sem ele, a apresentação não é aceita — é exigência do programa e de qualquer feira de ciências.</p>
+        </div>
+      </div>
+      <div class="infobox tip" style="margin-top: 1rem;">
+        <span class="infobox-icon">💡</span>
+        <div class="infobox-body">
+          <strong>Jaleco</strong>
+          <p>O jaleco é obrigatório apenas para quem realiza <strong>prática de laboratório</strong> (questão de segurança). Para os demais, seu uso durante as orientações é incentivado como cultura do programa — mas não é uma exigência.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </div>
 
 <footer>
